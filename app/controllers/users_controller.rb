@@ -8,8 +8,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
-    if user.save
+    # Use @user in case we redirect to new (need reference for form)
+    @user = User.new(user_params)
+    if @user.save
       flash[:success] = "Welcome to Examinatr :)"
       redirect_to user
     else

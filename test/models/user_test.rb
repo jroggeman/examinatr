@@ -19,8 +19,8 @@ class UserTest < ActiveSupport::TestCase
 
   test "user should not save without a password" do
     user = User.new
-    user.username = "becca"
-    user.name = "becca"
+    user.username = "bob"
+    user.name = "bob"
     assert_not user.save
   end
 

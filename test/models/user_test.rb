@@ -12,6 +12,17 @@ class UserTest < ActiveSupport::TestCase
     assert user.save
   end
 
+  test "user should not save if username exists" do
+    user = User.new
+
+    user.password = "123456"
+    user.password_confirmation = "123456"
+    user.name = "tom"
+    user.username = "bob"
+
+    assert_not user.save
+  end
+
   test "empty user should not save" do
     user = User.new
     assert_not user.save

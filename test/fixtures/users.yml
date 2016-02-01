@@ -1,11 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  username: MyString
-  password_digest: MyString
-  name: MyString
-
-two:
-  username: MyString2
-  password_digest: MyString2
-  name: MyString2
+tom:
+  username: tom
+  password_digest: BCrypt::password.create("123456")
+  name: Thomas

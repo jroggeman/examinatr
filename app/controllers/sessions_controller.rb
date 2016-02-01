@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_authentication only: [:new, :create]
+
   def new
   end
 
@@ -8,7 +10,8 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to user
     else
-      flash[:danger] = "Invalid username/password combination"
+      # Use flash for this rendering, not the next page load
+      flash.now[:danger] = "Invalid username/password combination"
       render 'new'
     end
   end

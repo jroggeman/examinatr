@@ -9,6 +9,7 @@ class UserLoginsTest < ActionDispatch::IntegrationTest
     }
 
     assert_template 'users/show'
+    assert_not_nil session[:user_id]
   end
 
   test "user can not login with wrong password" do

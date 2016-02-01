@@ -8,7 +8,7 @@ class UserLoginsTest < ActionDispatch::IntegrationTest
                                              password: "123456"
     }
 
-    assert_template 'users/show'
+    assert_template 'exams/index'
     assert_not_nil session[:user_id]
   end
 

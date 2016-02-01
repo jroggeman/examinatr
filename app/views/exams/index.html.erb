@@ -2,7 +2,7 @@
 <% if @exams.count > 0 %>
   <ul>
   <% @exams.each do |exam| %>
-    <li><%= link_to exam.name, exam %></li>
+    <li><%= link_to exam.name, user_exam_path(current_user, exam) %></li>
   <% end %>
   </ul>
 <% else %>

@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
   def new
     if current_user
-      redirect_to user_exams_path(current_user.exams)
+      redirect_to user_exams_path(current_user)
     end
   end
 

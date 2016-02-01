@@ -2,5 +2,5 @@
 
 tom:
   username: tom
-  password_digest: BCrypt::password.create("123456")
+  password_digest: <%= BCrypt::Password.create("123456") %>
   name: Thomas

@@ -17,8 +17,8 @@ class UserTest < ActiveSupport::TestCase
 
     user.password = "123456"
     user.password_confirmation = "123456"
-    user.name = "tom"
-    user.username = "bob"
+    user.name = "bob"
+    user.username = "tom"
 
     assert_not user.save
   end

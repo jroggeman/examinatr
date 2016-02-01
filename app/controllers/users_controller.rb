@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_authentication only: [:new, :create]
+
   def index
     @users = User.all
   end
@@ -11,6 +13,8 @@ class UsersController < ApplicationController
     # Use @user in case we redirect to new (need reference for form)
     @user = User.new(user_params)
     if @user.save
+      # Log the user in after registration
+      log_in(@user)
       flash[:success] = "Welcome to Examinatr :)"
       redirect_to @user
     else

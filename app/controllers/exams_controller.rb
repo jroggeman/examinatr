@@ -3,6 +3,10 @@ class ExamsController < ApplicationController
     @exams = current_user.exams
   end
 
+  def show
+    @exam = Exam.find(params[:id])
+  end
+
   def new
     @exam = Exam.new(user: current_user)
   end
@@ -10,6 +14,4 @@ class ExamsController < ApplicationController
   def create
   end
 
-  def show
-  end
 end

@@ -2,6 +2,9 @@ class SessionsController < ApplicationController
   skip_authentication only: [:new, :create]
 
   def new
+    if current_user
+      redirect_to user_exams_path(current_user.exams)
+    end
   end
 
   def create

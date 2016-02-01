@@ -31,4 +31,18 @@ class UserLoginsTest < ActionDispatch::IntegrationTest
 
     assert_template 'sessions/new'
   end
+
+  test "user is redirected from login page if already logged in" do
+    get login_path
+
+    post_via_redirect login_path, session: { username: "tom",
+                                             password: "123456"
+    }
+
+    assert_template 'exams/index'
+    assert_not_nil session[:user_id]
+
+    get_via_redirect login_path
+    assert_template 'exams/index'
+  end
 end

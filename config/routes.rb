@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # Start at login page
+  root 'sessions#new'
+
   # Users and exams
   resources :users, except: [:edit, :update, :destroy]
   resources :exams, except: [:edit, :update, :destroy]

@@ -11,6 +11,8 @@ class ActiveSupport::TestCase
 end
 
 class ActionDispatch::IntegrationTest
+  include Capybara::DSL
+
   def login_as(user, password)
     post login_path, session: {
       username: user.username,

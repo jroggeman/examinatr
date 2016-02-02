@@ -37,4 +37,14 @@ class ExamModificationTest < ActionDispatch::IntegrationTest
     assert_template 'exams/new'
     assert_equal Exam.count, 2
   end
+
+  test "should be able to view exam" do
+    get user_exam_path(users(:tom), exams(:exam1))
+    assert_response :success
+    assert_select "h1", text: "Exam 1"
+
+    get user_exam_path(users(:tom), exams(:exam2))
+    assert_response :success
+    assert_select "h1", text: "Exam 2"
+  end
 end

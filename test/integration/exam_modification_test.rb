@@ -1,50 +1,41 @@
 require 'test_helper'
 
 class ExamModificationTest < ActionDispatch::IntegrationTest
-  def setup
+  setup do
+    # Also redirects to exams index
     login_as(users(:tom), "123456")
   end
 
   test "should be able to view exams" do
-    get exams_path
-    assert_response :success
+    visit('/exams')
 
     users(:tom).exams.each do |exam|
-      assert_select "li", text: exam.name
+      assert page.has_selector?('li', text: exam.name)
     end
   end
 
   test "should be able to create new exam" do
-    get new_exam_path
-    assert_response :success
+    visit('/exams/new')
+    fill_in('Name', with: 'Exam 3')
+    click_on('Create Exam')
 
-    post_via_redirect exams_path, exam: {
-      name: "Exam 3"
-    }
-
-    assert_template 'exams/index'
-    assert_select "li", text: "Exam 3"
+    assert page.has_selector?('li', text: 'Exam 3')
   end
 
   test "should not create empty exam" do
-    get new_exam_path
-    assert_response :success
+    assert_no_difference 'User.count' do
+      visit('/exams/new')
+      click_on('Create Exam')
+    end
 
-    post exams_path, exam: {
-      name: ""
-    }
-
-    assert_template 'exams/new'
-    assert_equal Exam.count, 2
+    assert page.has_selector?('label', text: 'Name')
   end
 
   test "should be able to view exam" do
-    get exam_path(exams(:exam1))
-    assert_response :success
-    assert_select "h1", text: "Exam 1"
+    visit(exam_path(exams(:exam1)))
+    assert page.has_selector?('h1', text: 'Exam 1')
 
-    get exam_path(exams(:exam2))
-    assert_response :success
-    assert_select "h1", text: "Exam 2"
+    visit(exam_path(exams(:exam2)))
+    assert page.has_selector?('h1', text: 'Exam 2')
   end
 end

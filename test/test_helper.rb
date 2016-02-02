@@ -20,8 +20,8 @@ class ActionDispatch::IntegrationTest
   def login_as(user, password)
     visit('/login')
 
-    fill_in('Username', with: 'tom')
-    fill_in('Password', with: '123456')
+    fill_in('Username', with: user.username)
+    fill_in('Password', with: password)
     click_on('Log In')
   end
 

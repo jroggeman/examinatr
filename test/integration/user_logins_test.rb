@@ -43,4 +43,18 @@ class UserLoginsTest < ActionDispatch::IntegrationTest
     visit('/login')
     assert page.has_content?("All Exams")
   end
+
+  test "user is redirected to login page on logout" do
+    visit('/login')
+
+    fill_in('Username', with: 'tom')
+    fill_in('Password', with: '123456')
+    click_on('Log In')
+
+    assert page.has_content?("All Exams")
+
+    visit('/logout')
+
+    assert page.has_content?("Log In")
+  end
 end

@@ -2,47 +2,45 @@ require 'test_helper'
 
 class UserLoginsTest < ActionDispatch::IntegrationTest
   test "user can login successfully" do
-    get login_path
+    visit('/login')
 
-    post_via_redirect login_path, session: { username: "tom",
-                                             password: "123456"
-    }
+    fill_in('Username', with: 'tom')
+    fill_in('Password', with: '123456')
+    click_on('Log In')
 
-    assert_template 'exams/index'
-    assert_not_nil session[:user_id]
+    assert page.has_content?("All Exams")
   end
 
   test "user can not login with wrong password" do
-    get login_path
+    visit('/login')
 
-    post login_path, session: { username: "tom",
-                                password: "12345"
-    }
+    fill_in('Username', with: 'tom')
+    fill_in('Password', with: '12345')
+    click_on('Log In')
 
-    assert_template 'sessions/new'
+    assert page.has_content?("Log In")
   end
 
   test "user can not login with missing username" do
-    get login_path
+    visit('/login')
 
-    post login_path, session: { username: "tom2",
-                                password: "12345"
-    }
+    fill_in('Username', with: 'tom2')
+    fill_in('Password', with: '12345')
+    click_on('Log In')
 
-    assert_template 'sessions/new'
+    assert page.has_content?("Log In")
   end
 
   test "user is redirected from login page if already logged in" do
-    get login_path
+    visit('/login')
 
-    post_via_redirect login_path, session: { username: "tom",
-                                             password: "123456"
-    }
+    fill_in('Username', with: 'tom2')
+    fill_in('Password', with: '12345')
+    click_on('Log In')
 
-    assert_template 'exams/index'
-    assert_not_nil session[:user_id]
+    assert page.has_content?("Log In")
 
-    get_via_redirect login_path
-    assert_template 'exams/index'
+    visit('/login')
+    assert page.has_content?("All Exams")
   end
 end

@@ -13,6 +13,10 @@ end
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
 
+  teardown do
+    Capybara.reset_sessions!
+  end
+
   def login_as(user, password)
     post login_path, session: {
       username: user.username,

@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to Examinatr :)"
       redirect_to user_exams_path(@user)
     else
-      flash[:error] = "Problem saving user"
+      flash.now[:error] = "Problem saving user"
       render 'new'
     end
   end

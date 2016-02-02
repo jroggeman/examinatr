@@ -12,6 +12,20 @@ class ExamsController < ApplicationController
   end
 
   def create
+    @exam = Exam.new(exam_params.merge(user: current_user))
+    if @exam.save
+      flash[:success] = "Succesfully created #{@exam.name}!"
+      redirect_to user_exams_path(current_user)
+    else
+      flash.now[:error] = "Couldn't create exam :("
+      render 'new'
+    end
+  end
+
+  private
+
+  def exam_params
+    params.require(:exam).permit(:name)
   end
 
 end

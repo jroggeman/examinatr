@@ -5,5 +5,5 @@
 
   <br>
 
-  <%= f.submit "Create Exam", class: "btn btn-primary" %>
+  <%= f.submit "Create Exam", class: "btn btn-primary" %><%= link_to "Cancel", user_exams_path(current_user), class: 'btn btn-danger' %>
 <% end %>

@@ -15,7 +15,7 @@ class ExamsController < ApplicationController
     @exam = Exam.new(exam_params.merge(user: current_user))
     if @exam.save
       flash[:success] = "Succesfully created #{@exam.name}!"
-      redirect_to user_exams_path(current_user)
+      redirect_to exams_path
     else
       flash.now[:error] = "Couldn't create exam :("
       render 'new'
@@ -24,7 +24,7 @@ class ExamsController < ApplicationController
 
   def destroy
     Exam.destroy(params[:id])
-    redirect_to user_exams_path(current_user)
+    redirect_to exams_path
   end
 
   private

@@ -2,11 +2,11 @@
 <% if @exams.count > 0 %>
   <ul>
   <% @exams.each do |exam| %>
-    <li><%= link_to exam.name, user_exam_path(current_user, exam) %></li>
+    <li><%= link_to exam.name, exam_path(exam) %></li>
   <% end %>
   </ul>
 <% else %>
   No exams here! :)
 <% end %>
 <hr>
-<%= link_to "Create new exam", new_user_exam_path(current_user), class: 'btn btn-primary' %>
+<%= link_to "Create new exam", new_exam_path, class: 'btn btn-primary' %>

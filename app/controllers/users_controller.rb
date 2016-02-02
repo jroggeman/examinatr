@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       # Log the user in after registration
       log_in(@user)
       flash[:success] = "Welcome to Examinatr :)"
-      redirect_to user_exams_path(@user)
+      redirect_to exams_path
     else
       flash.now[:error] = "Problem saving user"
       render 'new'

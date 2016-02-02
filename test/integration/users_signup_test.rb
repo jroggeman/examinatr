@@ -2,29 +2,32 @@ require 'test_helper'
 
 class UsersSignupTest < ActionDispatch::IntegrationTest
   test "invalid signup information" do
-    get new_user_path
+    visit('/register')
+
     assert_no_difference 'User.count' do
-      post users_path, user: { name: "",
-                               username: "",
-                               password: "123",
-                               password_confirmation: "456"
-      }
+      fill_in('Name', with: '')
+      fill_in('Username', with: '')
+      fill_in('Password', with: '123')
+      fill_in('Password confirmation', with: '456')
+
+      click_on('Register')
     end
 
-    assert_template 'users/new'
+    assert page.has_content?("New User")
   end
 
-  test "good signup information" do
-    get new_user_path
+  test "Signup with valid information" do
+    visit('/register')
 
+    # Register a new user
     assert_difference 'User.count', 1 do
-      post_via_redirect users_path, user: { name: "Bob",
-                                            username: "bob_smith",
-                                            password: "123456",
-                                            password_confirmation: "123456"
-      }
-
-      assert_template 'exams/index'
+      fill_in('Name', with: 'Bob')
+      fill_in('Username', with: 'bob_smith')
+      fill_in('Password', with: '123456')
+      fill_in('Password confirmation', with: '123456')
+      click_on('Register')
     end
+
+    assert page.has_content?("All Exams")
   end
 end

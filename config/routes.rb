@@ -3,9 +3,8 @@ Rails.application.routes.draw do
   root 'sessions#new'
 
   # Users and exams
-  resources :users, only: [:new, :create] do
-    resources :exams, except: [:edit, :update]
-  end
+  resources :users, only: [:new, :create]
+  resources :exams, except: [:edit, :update]
 
   # Session management
   get 'login' => 'sessions#new'

@@ -6,7 +6,7 @@ class ExamModificationTest < ActionDispatch::IntegrationTest
   end
 
   test "should be able to view exams" do
-    get user_exams_path(users(:tom))
+    get exams_path
     assert_response :success
 
     users(:tom).exams.each do |exam|
@@ -15,10 +15,10 @@ class ExamModificationTest < ActionDispatch::IntegrationTest
   end
 
   test "should be able to create new exam" do
-    get new_user_exam_path(users(:tom))
+    get new_exam_path
     assert_response :success
 
-    post_via_redirect user_exams_path(users(:tom)), exam: {
+    post_via_redirect exams_path, exam: {
       name: "Exam 3"
     }
 
@@ -27,10 +27,10 @@ class ExamModificationTest < ActionDispatch::IntegrationTest
   end
 
   test "should not create empty exam" do
-    get new_user_exam_path(users(:tom))
+    get new_exam_path
     assert_response :success
 
-    post user_exams_path(users(:tom)), exam: {
+    post exams_path, exam: {
       name: ""
     }
 
@@ -39,11 +39,11 @@ class ExamModificationTest < ActionDispatch::IntegrationTest
   end
 
   test "should be able to view exam" do
-    get user_exam_path(users(:tom), exams(:exam1))
+    get exam_path(exams(:exam1))
     assert_response :success
     assert_select "h1", text: "Exam 1"
 
-    get user_exam_path(users(:tom), exams(:exam2))
+    get exam_path(exams(:exam2))
     assert_response :success
     assert_select "h1", text: "Exam 2"
   end

@@ -1,11 +1,11 @@
 <h1>
+</h1>
+This is the exam.
+<hr>
   <%= @exam.name %>
   <%= link_to "Delete exam",
               user_exam_path(current_user, @exam),
               data: { confirm: "Are you sure you want to delete this exam?" },
-              method: :delete, class: 'btn btn-danger' %>
-</h1>
-This is the exam.
-<hr>
+              method: :delete, class: 'btn btn-danger' %><br>
 <%= link_to "Back to exams", user_exams_path(current_user) %>
 

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # Users and exams
   resources :users, only: [:new, :create] do
-    resources :exams, except: [:edit, :update, :destroy]
+    resources :exams, except: [:edit, :update]
   end
 
   # Session management

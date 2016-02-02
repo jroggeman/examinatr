@@ -22,6 +22,11 @@ class ExamsController < ApplicationController
     end
   end
 
+  def destroy
+    Exam.destroy(params[:id])
+    redirect_to user_exams_path(current_user)
+  end
+
   private
 
   def exam_params

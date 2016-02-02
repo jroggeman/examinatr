@@ -34,11 +34,11 @@ class UserLoginsTest < ActionDispatch::IntegrationTest
   test "user is redirected from login page if already logged in" do
     visit('/login')
 
-    fill_in('Username', with: 'tom2')
-    fill_in('Password', with: '12345')
+    fill_in('Username', with: 'tom')
+    fill_in('Password', with: '123456')
     click_on('Log In')
 
-    assert page.has_content?("Log In")
+    assert page.has_content?("All Exams")
 
     visit('/login')
     assert page.has_content?("All Exams")

@@ -18,9 +18,12 @@ class ActionDispatch::IntegrationTest
   end
 
   def login_as(user, password)
-    post login_path, session: {
-      username: user.username,
-      password: password
-    }
+    visit('/login')
+
+    fill_in('Username', with: 'tom')
+    fill_in('Password', with: '123456')
+    click_on('Log In')
   end
+
+
 end

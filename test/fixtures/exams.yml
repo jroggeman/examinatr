@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+exam1:
+  name: Exam 1
+  user: tom
+
+exam2:
+  name: Exam 2
+  user: tom
+
+jim_exam:
+  name: Jim's Exam
+  user: jim

@@ -16,15 +16,11 @@ class UsersController < ApplicationController
       # Log the user in after registration
       log_in(@user)
       flash[:success] = "Welcome to Examinatr :)"
-      redirect_to @user
+      redirect_to exams_path
     else
-      flash[:error] = "Problem saving user"
+      flash.now[:error] = "Problem saving user"
       render 'new'
     end
-  end
-
-  def show
-    @user = User.find(params[:id])
   end
 
   private

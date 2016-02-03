@@ -23,6 +23,11 @@ module Authentication extend ActiveSupport::Concern
     session[:user_id] = user.id
   end
 
+  def log_out
+    session.delete(:user_id) if session[:user_id]
+    @current_user = nil
+  end
+
   # When included, redirect the user if they aren't logged in
   def require_authentication
     unless current_user

@@ -8,9 +8,6 @@
 </head>
 <body>
   <div class="container">
-    <% if session[:user_id] %>
-      <p>Hello, <%= User.find(session[:user_id]).name %></p>
-    <% end %>
     <% flash.each do |type, message| %>
       <div class="alert alert-<%= type %>"><%= message %></div>
     <% end %>

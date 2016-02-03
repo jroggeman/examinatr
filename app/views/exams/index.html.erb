@@ -1,0 +1,12 @@
+<h1>All Exams</h1>
+<% if @exams.count > 0 %>
+  <ul>
+  <% @exams.each do |exam| %>
+    <li><%= link_to exam.name, exam_path(exam) %></li>
+  <% end %>
+  </ul>
+<% else %>
+  No exams here! :)
+<% end %>
+<hr>
+<%= link_to "Create new exam", new_exam_path, class: 'btn btn-primary' %>

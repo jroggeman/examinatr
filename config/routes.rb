@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   # Users and exams
   resources :users, only: [:new, :create]
-  resources :exams, except: [:edit, :update]
+  resources :exams, except: [:edit, :update] do
+    resources :questions, only: [:new, :create, :show]
+  end
 
   # Session management
   get 'login' => 'sessions#new'

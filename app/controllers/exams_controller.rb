@@ -24,7 +24,8 @@ class ExamsController < ApplicationController
   end
 
   def destroy
-    Exam.destroy(params[:id])
+    @exam = current_user.exams.find_by_id(params[:id])
+    Exam.destroy(params[:id]) unless @exam.nil?
     redirect_to exams_path
   end
 

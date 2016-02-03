@@ -38,4 +38,10 @@ class ExamModificationTest < ActionDispatch::IntegrationTest
     visit(exam_path(exams(:exam2)))
     assert page.has_selector?('h1', text: 'Exam 2')
   end
+
+  test "user should only see their exams" do
+    assert_not page.has_selector?('li', text: "Jim's Exam")
+    visit(exam_path(exams(:jim_exam)))
+    assert has_current_path?('/exams')
+  end
 end

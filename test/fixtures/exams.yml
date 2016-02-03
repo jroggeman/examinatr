@@ -2,8 +2,12 @@
 
 exam1:
   name: Exam 1
-  user_id: 1
+  user: tom
 
 exam2:
   name: Exam 2
-  user_id: 1
+  user: tom
+
+jim_exam:
+  name: Jim's Exam
+  user: jim

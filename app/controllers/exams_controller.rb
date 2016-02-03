@@ -4,7 +4,8 @@ class ExamsController < ApplicationController
   end
 
   def show
-    @exam = Exam.find(params[:id])
+    @exam = current_user.exams.find_by_id(params[:id])
+    redirect_to exams_path if @exam.nil?
   end
 
   def new

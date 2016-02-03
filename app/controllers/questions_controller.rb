@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
 
   def new
     @q = Question.new
+    @q.number = @exam.questions.count + 1
   end
 
   def create

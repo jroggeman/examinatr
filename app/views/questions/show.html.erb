@@ -1,2 +1,3 @@
-<h1>Questions#show</h1>
-<p>Find me in app/views/questions/show.html.erb</p>
+<h1>Question <%= @question.number %></h1>
+<h3><%= pluralize(@question.points, 'point') %></h3>
+<p><%= @question.text %></p>

@@ -7,7 +7,7 @@ This is the exam.
 <% else %>
   <ol>
     <% @exam.questions.each do |q| %>
-    <li>(<%= pluralize(q.points, 'point') %>) <%= q.text %></li>
+      <li>(<%= pluralize(q.points, 'point') %>) <%= q.text %></li>
     <% end %>
   </ol>
 <% end %>

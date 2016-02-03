@@ -2,6 +2,15 @@
   <%= @exam.name %>
 </h1>
 This is the exam.
+<% if @exam.questions.count == 0 %>
+  <p>No questions here :)</p>
+<% else %>
+  <ol>
+    <% @exam.questions.each do |q| %>
+    <li>(<%= pluralize(q.points, 'point') %>) <%= q.text %></li>
+    <% end %>
+  </ol>
+<% end %>
 <hr>
   <%= link_to "Delete exam",
               exam_path(@exam),

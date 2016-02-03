@@ -23,7 +23,7 @@ class ExamModificationTest < ActionDispatch::IntegrationTest
   end
 
   test "should not create empty exam" do
-    assert_no_difference 'User.count' do
+    assert_no_difference 'Exam.count' do
       visit('/exams/new')
       click_on('Create Exam')
     end

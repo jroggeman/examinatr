@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  get 'questions/new'
-
-  get 'questions/create'
-
-  get 'questions/show'
-
   # Start at login page
   root 'sessions#new'
 

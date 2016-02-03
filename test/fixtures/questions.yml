@@ -2,12 +2,12 @@
 
 one:
   number: 1
-  text: MyString
-  points: 1
-  exam_id: 
+  text: First question
+  points: 5
+  exam_id: exam1
 
 two:
-  number: 1
-  text: MyString
-  points: 1
-  exam_id: 
+  number: 2
+  text: Second question
+  points: 5
+  exam_id: exam1

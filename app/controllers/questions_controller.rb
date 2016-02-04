@@ -8,6 +8,8 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+    @question.number = @exam.questions.count + 1
+
     @question.exam = @exam
 
     if @question.save

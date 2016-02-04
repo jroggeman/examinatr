@@ -1,0 +1,16 @@
+<h1><%= @exam.name %></h1>
+<h3>Question <%= @question.number %></h3>
+<%= form_for [@exam, @question] do |f| %>
+  <%= f.label :points %>
+  <%= f.number_field :points, class: 'form-control' %>
+
+  <%= f.label :text %>
+  <%= f.text_field :text, class: 'form-control' %>
+
+  <br>
+
+  <% if @question.number > 1 %>
+    <%= link_to "Previous", previous_question_path(@exam, @question), class: 'btn btn-primary' %>
+  <% end %>
+  <%= f.submit "Next", class: 'btn btn-primary' %> <%= link_to "Back to exams", exam_path(@exam), class: 'btn btn-primary' %>
+<% end %>

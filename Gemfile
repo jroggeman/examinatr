@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.3'
-gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
@@ -17,6 +16,7 @@ gem 'bootstrap-sass'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'byebug'
   gem 'spring'
 end
@@ -33,6 +33,7 @@ group :development do
 end
 
 group :production do
-  gem 'unicorn'
+  gem 'rails_12factor'
+  gem 'pg'
 end
 

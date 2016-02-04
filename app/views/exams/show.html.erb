@@ -11,6 +11,8 @@ This is the exam.
     <% end %>
   </ol>
 <% end %>
+<br>
+<%= link_to "Add Questions", new_exam_question_path(@exam), class: 'btn btn-primary' %>
 <hr>
   <%= link_to "Delete exam",
               exam_path(@exam),

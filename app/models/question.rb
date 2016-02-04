@@ -9,6 +9,10 @@ class Question < ActiveRecord::Base
 
   before_create :assign_number
 
+  def is_last_question_of_exam?
+    self.number == self.exam.questions.count
+  end
+
   private
 
     def assign_number

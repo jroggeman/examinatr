@@ -24,7 +24,6 @@ class QuestionsTest < ActionDispatch::IntegrationTest
   # Previous question
   test "User can return to previous question" do
     visit(exam_path(exams(:exam1)))
-    save_and_open_page
     assert page.has_selector?('li', text: '(5 points) Second question')
 
     # Go to previous question

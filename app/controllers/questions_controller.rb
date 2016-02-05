@@ -34,7 +34,7 @@ class QuestionsController < ApplicationController
     @question = Question.find_by(id: params[:id])
     redirect_to exam_path(@exam) if @question.nil?
 
-    if @question.save
+    if @question.update(question_params)
 
       if @question.is_last_question_of_exam?
         redirect_to new_exam_question_path(@exam)

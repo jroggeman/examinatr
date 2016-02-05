@@ -35,6 +35,7 @@ group :test do
   gem 'mini_backtrace'
 
   # Automatic tests
+  gem 'guard'
   gem 'guard-minitest'
 end
 

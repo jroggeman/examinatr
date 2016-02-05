@@ -1,13 +1,16 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
+
+#Integration tests
 require 'capybara/rails'
 
-class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
+# Prettier test output
+require 'minitest/reporters'
+MiniTest::Reporters.use!
 
-  # Add more helper methods to be used by all tests here...
+class ActiveSupport::TestCase
+  fixtures :all
 end
 
 class ActionDispatch::IntegrationTest
@@ -24,6 +27,4 @@ class ActionDispatch::IntegrationTest
     fill_in('Password', with: password)
     click_on('Log In')
   end
-
-
 end

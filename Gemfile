@@ -22,10 +22,20 @@ group :development, :test do
 end
 
 group :test do
+  # Integration tests
   gem 'capybara'
 
-  # For capybara opening saved pages
+  # View headless integration test pages for debugging
   gem 'launchy'
+
+  # Prettier test output
+  gem 'minitest-reporters'
+
+  # Silence backtracing into libraries
+  gem 'mini_backtrace'
+
+  # Automatic tests
+  gem 'guard-minitest'
 end
 
 group :development do

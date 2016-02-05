@@ -44,4 +44,5 @@ class ExamModificationTest < ActionDispatch::IntegrationTest
     visit(exam_path(exams(:jim_exam)))
     assert has_current_path?('/exams')
   end
+
 end

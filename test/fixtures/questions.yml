@@ -4,10 +4,10 @@ one:
   number: 1
   text: First question
   points: 5
-  exam_id: exam1
+  exam: exam1
 
 two:
   number: 2
   text: Second question
   points: 5
-  exam_id: exam1
+  exam: exam1

@@ -7,7 +7,6 @@ class ExamRenderTest < ActionDispatch::IntegrationTest
 
   test "can render exam" do
     visit('/exams')
-    save_and_open_page
     click_on('Exam 1')
     click_on('Render exam')
 

@@ -10,12 +10,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    # Use @user in case we redirect to new (need reference for form)
     @user = User.new(user_params)
     if @user.save
-      # Log the user in after registration
-      log_in(@user)
       flash[:success] = "Welcome to Examinatr :)"
+
+      log_in(@user)
       redirect_to exams_path
     else
       flash.now[:error] = "Problem saving user"

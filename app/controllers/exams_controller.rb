@@ -16,7 +16,7 @@ class ExamsController < ApplicationController
     @exam = Exam.new(exam_params.merge(user: current_user))
     if @exam.save
       flash[:success] = "Succesfully created #{@exam.name}!"
-      redirect_to exams_path
+      redirect_to exam_path(@exam)
     else
       flash.now[:error] = "Couldn't create exam :("
       render 'new'

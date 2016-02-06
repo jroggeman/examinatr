@@ -19,7 +19,7 @@ class ExamModificationTest < ActionDispatch::IntegrationTest
     fill_in('Name', with: 'Exam 3')
     click_on('Create Exam')
 
-    assert page.has_selector?('li', text: 'Exam 3')
+    assert page.has_selector?('h1', text: 'Exam 3')
   end
 
   test "should not create empty exam" do

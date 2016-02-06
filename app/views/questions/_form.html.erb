@@ -9,6 +9,7 @@
 
   <br>
 
+  <div class="form-group">
   <% if @question.number > 1 %>
     <%= link_to "Previous", previous_question_path(@exam, @question), class: 'btn btn-primary' %>
   <% else %>
@@ -19,8 +20,12 @@
 
   <% if @question.number < @exam.questions.count %>
     <%= link_to "Next", next_question_path(@exam, @question), class: 'btn btn-primary' %>
-  <% else %>
+  <% elsif @question.number == @exam.questions.count %>
     <%= link_to "New", new_exam_question_path(@exam), class: 'btn btn-primary' %>
+  <% else %>
+    <button class="btn btn-primary" diabled="disabled">New</button>
   <% end %>
+  </div>
+
   <%= link_to "Back to exams", exam_path(@exam), class: 'btn btn-primary' %>
 <% end %>

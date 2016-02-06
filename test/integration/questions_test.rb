@@ -7,15 +7,18 @@ class QuestionsTest < ActionDispatch::IntegrationTest
   end
 
   # New question
-  test "Can create a new question" do
+  test "can create a new question" do
     visit(exam_path(exams(:exam1)))
 
     click_on('Add Questions')
+    assert page.has_selector?('h3', text: 'Question 3')
     assert_difference 'Question.count', 1 do
       fill_in('Points', with: 5)
       fill_in('Text', with: 'New question test')
-      click_on('Next')
+      click_on('Save')
     end
+
+    assert page.has_selector?('h3', text: 'Question 3')
 
     click_on('Back to exams')
     assert page.has_selector?('li', text: 'New question test')

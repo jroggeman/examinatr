@@ -12,5 +12,5 @@
   <% if @question.number > 1 %>
     <%= link_to "Previous", previous_question_path(@exam, @question), class: 'btn btn-primary' %>
   <% end %>
-  <%= f.submit "Next", class: 'btn btn-primary' %> <%= link_to "Back to exams", exam_path(@exam), class: 'btn btn-primary' %>
+  <%= f.submit "Save", class: 'btn btn-success' %> <%= link_to "Back to exams", exam_path(@exam), class: 'btn btn-primary' %>
 <% end %>

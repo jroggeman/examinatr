@@ -7,7 +7,7 @@ This is the exam.
 <% else %>
   <ol>
     <% @exam.questions.each do |q| %>
-      <li><%= link_to "(#{pluralize(q.points, 'point')}) #{q.text}", edit_exam_question_path(@exam, q) %></li>
+      <li><%= link_to "(#{pluralize(q.points, 'point')}) #{truncate(q.text, length: 50)}", edit_exam_question_path(@exam, q) %></li>
     <% end %>
   </ol>
 <% end %>

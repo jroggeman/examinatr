@@ -1,1 +1,6 @@
-<h1>Render</h1>
+<h1><%= @exam.name %></h1>
+<ol>
+<% @exam.questions.each do |q| %>
+  <li>(<%= pluralize(q.points, 'point')%>) <%= parse(q.text) %></li>
+<% end %>
+</ol>

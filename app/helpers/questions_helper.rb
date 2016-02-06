@@ -6,7 +6,7 @@ module QuestionsHelper
   end
 
   def next_question_path(exam, question)
-    if question.is_last_question_on_exam?
+    if question.is_last_question_of_exam?
       nil
     else
       previous_number = question.number + 1

@@ -11,6 +11,16 @@
 
   <% if @question.number > 1 %>
     <%= link_to "Previous", previous_question_path(@exam, @question), class: 'btn btn-primary' %>
+  <% else %>
+    <button class="btn btn-primary" disabled="disabled">Previous</button>
   <% end %>
-  <%= f.submit "Next", class: 'btn btn-primary' %> <%= link_to "Back to exams", exam_path(@exam), class: 'btn btn-primary' %>
+
+  <%= f.submit "Save", class: 'btn btn-success' %>
+
+  <% if @question.number < @exam.questions.count %>
+    <%= link_to "Next", next_question_path(@exam, @question), class: 'btn btn-primary' %>
+  <% else %>
+    <%= link_to "New", new_exam_question_path(@exam), class: 'btn btn-primary' %>
+  <% end %>
+  <%= link_to "Back to exams", exam_path(@exam), class: 'btn btn-primary' %>
 <% end %>

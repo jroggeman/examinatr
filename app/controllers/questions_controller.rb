@@ -38,7 +38,7 @@ class QuestionsController < ApplicationController
     if @question.update(question_params)
 
       if @question.is_last_question_of_exam?
-        redirect_to new_exam_question_path(@exam)
+        redirect_to edit_exam_question_path(@exam, @question)
       else
         previous_number = @question.number + 1
         next_question = @exam.questions.find_by(number: previous_number)

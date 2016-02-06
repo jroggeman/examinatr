@@ -32,10 +32,14 @@ class QuestionsTest < ActionDispatch::IntegrationTest
     click_on('Add Questions')
     click_on('Previous')
 
+    assert page.has_selector?('h3', text: 'Question 2')
+
     assert_no_difference 'Question.count' do
       fill_in('Points', with: 10)
-      click_on('Next')
+      click_on('Save')
     end
+
+    assert page.has_selector?('h3', text: 'Question 2')
 
     click_on('Back to exams')
 
@@ -58,12 +62,12 @@ class QuestionsTest < ActionDispatch::IntegrationTest
   end
 
   # Next = new at end
-  test "Clicking next while at last question moves to a new question" do
+  test "Clicking new while at last question moves to a new question" do
     visit(exam_path(exams(:exam1)))
 
     click_on('Add Questions')
     click_on('Previous')
-    click_on('Next')
+    click_on('New')
 
     assert has_current_path?(new_exam_question_path(exams(:exam1)))
 

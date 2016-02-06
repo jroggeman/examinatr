@@ -8,6 +8,11 @@ class ExamsController < ApplicationController
     redirect_to exams_path if @exam.nil?
   end
 
+  def render_for_print
+    @exam = current_user.exams.find_by_id(params[:id])
+    redirect_to exams_path if @exam.nil?
+  end
+
   def new
     @exam = Exam.new(user: current_user)
   end
@@ -34,5 +39,4 @@ class ExamsController < ApplicationController
   def exam_params
     params.require(:exam).permit(:name)
   end
-
 end

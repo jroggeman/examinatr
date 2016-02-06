@@ -7,15 +7,19 @@ This is the exam.
 <% else %>
   <ol>
     <% @exam.questions.each do |q| %>
-      <li><%= link_to "(#{pluralize(q.points, 'point')}) #{q.text}", edit_exam_question_path(@exam, q) %></li>
+      <li><%= link_to "(#{pluralize(q.points, 'point')}) #{truncate(q.text, length: 50)}", edit_exam_question_path(@exam, q) %></li>
     <% end %>
   </ol>
 <% end %>
 <br>
 <%= link_to "Add Questions", new_exam_question_path(@exam), class: 'btn btn-primary' %>
 <%= link_to "Back to exams", exams_path, class: 'btn btn-primary' %>
+
+<hr>
+
+  <%= link_to "Render exam", render_for_print_exam_path(@exam), class: 'btn btn-primary' %>
+
   <%= link_to "Delete exam",
               exam_path(@exam),
               data: { confirm: "Are you sure you want to delete this exam?" },
               method: :delete, class: 'btn btn-danger' %>&nbsp;
-<hr>

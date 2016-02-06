@@ -18,9 +18,13 @@ gem 'redcarpet'
 
 # gem 'capistrano-rails', group: :development
 
+
+group :development do
+  gem 'byebug'
+end
+
 group :development, :test do
   gem 'sqlite3'
-  gem 'byebug'
   gem 'spring'
 end
 

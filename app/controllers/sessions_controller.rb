@@ -13,14 +13,14 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to exams_path
     else
-      # Use flash for this rendering, not the next page load
       flash.now[:danger] = "Invalid username/password combination"
       render 'new'
     end
   end
 
   def destroy
-    session.delete(:user_id)
+    log_out
+
     redirect_to login_path
   end
 end

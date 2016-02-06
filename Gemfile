@@ -44,6 +44,9 @@ group :test do
   # Automatic tests
   gem 'guard'
   gem 'guard-minitest'
+
+  # Required for travis
+  gem 'rake'
 end
 
 group :development do

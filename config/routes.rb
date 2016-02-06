@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # Users and exams
   resources :users, only: [:new, :create]
   resources :exams, except: [:edit, :update] do
+    get 'render_for_print', on: :member
     resources :questions, only: [:new, :create, :show, :edit, :update]
   end
 

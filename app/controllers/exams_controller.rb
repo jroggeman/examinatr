@@ -8,6 +8,9 @@ class ExamsController < ApplicationController
     redirect_to exams_path if @exam.nil?
   end
 
+  def render_for_print
+  end
+
   def new
     @exam = Exam.new(user: current_user)
   end

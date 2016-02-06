@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
-  # Start at login page
   root 'sessions#new'
 
-  # Users and exams
   resources :users, only: [:new, :create]
+
   resources :exams, except: [:edit, :update] do
+    # Questions are sub-resource
+    resources :questions, except: [:index, :destroy]
+
+    # Explicit render path
     get 'render_for_print', on: :member
-    resources :questions, only: [:new, :create, :show, :edit, :update]
   end
 
   # Session management

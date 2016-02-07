@@ -26,6 +26,9 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'spring'
+
+  # Better irb and debugging
+  gem 'pry-rails'
 end
 
 group :test do

@@ -1,31 +1,37 @@
 <%= form_for [@exam, @question] do |f| %>
-  <%= f.label :points %>
-  <%= f.number_field :points, class: 'form-control' %>
-
-  <br>
-
-  <%= f.label :text %>
-  <%= f.text_area:text, class: 'form-control' %>
-
-  <br>
-
   <div class="form-group">
-  <% if @question.number > 1 %>
-    <%= link_to "Previous", previous_question_path(@exam, @question), class: 'btn btn-primary' %>
-  <% else %>
-    <button class="btn btn-primary" disabled="disabled">Previous</button>
-  <% end %>
+    <%= f.label :points, class: 'control-label ' %>
+    <%= f.number_field :points, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :text, class: 'control-label' %>
+    <%= f.text_area :text, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-4">
+        <% if @question.number > 1 %>
+          <%= link_to "Previous", previous_question_path(@exam, @question), class: 'btn btn-primary btn-block' %>
+        <% else %>
+          <button class="btn btn-primary btn-block" disabled="disabled">Previous</button>
+        <% end %>
+      </div>
 
-  <%= f.submit "Save", class: 'btn btn-success' %>
+      <div class="col-md-4">
+        <%= f.submit "Save", class: 'btn btn-success btn-block' %>
+      </div>
 
-  <% if @question.number < @exam.questions.count %>
-    <%= link_to "Next", next_question_path(@exam, @question), class: 'btn btn-primary' %>
-  <% elsif @question.number == @exam.questions.count %>
-    <%= link_to "New", new_exam_question_path(@exam), class: 'btn btn-primary' %>
-  <% else %>
-    <button class="btn btn-primary" diabled="disabled">New</button>
-  <% end %>
+      <div class="col-md-4">
+        <% if @question.number < @exam.questions.count %>
+          <%= link_to "Next", next_question_path(@exam, @question), class: 'btn btn-primary btn-block' %>
+        <% elsif @question.number == @exam.questions.count %>
+          <%= link_to "New", new_exam_question_path(@exam), class: 'btn btn-primary btn-block' %>
+        <% else %>
+          <button class="btn btn-primary btn-block" disabled="disabled">New</button>
+        <% end %>
+      </div>
+    </div>
   </div>
 
-  <%= link_to "Back to exams", exam_path(@exam), class: 'btn btn-primary' %>
+  <%= link_to "Back to exams", exam_path(@exam), class: 'btn btn-default btn-block' %>
 <% end %>

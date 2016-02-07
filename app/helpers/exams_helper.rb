@@ -5,8 +5,10 @@ module ExamsHelper
 
   private
 
-    def markdown_renderer
-      @markdown_render ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, disable_indented_code_blocks: false, fenced_code_blocks: true)
-    end
-
+  def markdown_renderer
+    @markdown_render ||= Redcarpet::Markdown.new(
+      Redcarpet::Render::HTML,
+      disable_indented_code_blocks: false,
+      fenced_code_blocks: true)
+  end
 end

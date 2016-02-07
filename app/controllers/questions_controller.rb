@@ -30,7 +30,7 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update(question_params)
-      flash[:success] = 'Succesfully updated question!'
+      flash[:success] = "Succesfully updated question!"
       redirect_to edit_exam_question_path(@exam, @question)
     else
       flash.now[:error] = "Couldn't update question :/"
@@ -40,21 +40,21 @@ class QuestionsController < ApplicationController
 
   private
 
-    def question_params
-      params.require(:question).permit(:text, :points, :exam)
-    end
+  def question_params
+    params.require(:question).permit(:text, :points, :exam)
+  end
 
-    def set_exam
-      @exam = Exam.find_by(id: params[:exam_id])
-      redirect_to exams_path if @exam.nil?
-    end
+  def set_exam
+    @exam = Exam.find_by(id: params[:exam_id])
+    redirect_to exams_path if @exam.nil?
+  end
 
-    def set_question
-      @question = Question.find_by(id: params[:id])
-    end
+  def set_question
+    @question = Question.find_by(id: params[:id])
+  end
 
-    def set_question_number(question)
-      question.number = @exam.questions.count + 1
-      redirect_to exam_path(@exam) if @question.nil?
-    end
+  def set_question_number(question)
+    question.number = @exam.questions.count + 1
+    redirect_to exam_path(@exam) if @question.nil?
+  end
 end

@@ -34,12 +34,12 @@ class ExamsController < ApplicationController
 
   private
 
-    def exam_params
-      params.require(:exam).permit(:name)
-    end
+  def exam_params
+    params.require(:exam).permit(:name)
+  end
 
-    def set_exam
-      @exam = current_user.exams.find_by_id(params[:id])
-      redirect_to exams_path if @exam.nil?
-    end
+  def set_exam
+    @exam = current_user.exams.find_by_id(params[:id])
+    redirect_to exams_path if @exam.nil?
+  end
 end

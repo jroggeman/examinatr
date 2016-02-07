@@ -1,16 +1,14 @@
 class ExamsController < ApplicationController
+  before_action :set_exam, only: [:show, :render_for_print, :destroy]
+
   def index
     @exams = current_user.exams
   end
 
   def show
-    @exam = current_user.exams.find_by_id(params[:id])
-    redirect_to exams_path if @exam.nil?
   end
 
   def render_for_print
-    @exam = current_user.exams.find_by_id(params[:id])
-    redirect_to exams_path if @exam.nil?
   end
 
   def new
@@ -19,6 +17,7 @@ class ExamsController < ApplicationController
 
   def create
     @exam = Exam.new(exam_params.merge(user: current_user))
+
     if @exam.save
       flash[:success] = "Succesfully created #{@exam.name}!"
       redirect_to exam_path(@exam)
@@ -29,7 +28,6 @@ class ExamsController < ApplicationController
   end
 
   def destroy
-    @exam = current_user.exams.find_by_id(params[:id])
     Exam.destroy(params[:id]) unless @exam.nil?
     redirect_to exams_path
   end
@@ -38,5 +36,10 @@ class ExamsController < ApplicationController
 
   def exam_params
     params.require(:exam).permit(:name)
+  end
+
+  def set_exam
+    @exam = current_user.exams.find_by_id(params[:id])
+    redirect_to exams_path if @exam.nil?
   end
 end

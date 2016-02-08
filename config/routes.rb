@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
 
-  resources :exams, except: [:edit, :update] do
+  resources :exams do
     # Questions are sub-resource
     resources :questions, except: [:index, :destroy]
 

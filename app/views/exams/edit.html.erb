@@ -1,0 +1,16 @@
+<h1>Edit Exam</h1>
+<%= form_for @exam do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <br>
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.submit 'Update Exam', class: 'btn btn-primary btn-block' %>
+    </div>
+    <div class="col-md-6">
+      <%= link_to 'Cancel', exam_path(@exam), class: 'btn btn-danger btn-block' %>
+    </div>
+  </div>
+<% end %>

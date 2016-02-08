@@ -1,5 +1,5 @@
 class ExamsController < ApplicationController
-  before_action :set_exam, only: [:show, :render_for_print, :destroy]
+  before_action :set_exam, only: [:show, :edit, :render_for_print, :destroy]
 
   def index
     @exams = current_user.exams
@@ -27,6 +27,21 @@ class ExamsController < ApplicationController
       redirect_to exam_path(@exam)
     else
       flash.now[:error] = "Couldn't create exam :("
+      render 'new'
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    @exam = Exam.find_by(id: params[:id])
+
+    if @exam.update(exam_params)
+      flash[:success] = "Succesfully updated #{@exam.name}!"
+      redirect_to exam_path(@exam)
+    else
+      flash.now[:error] = "Couldn't update exam :("
       render 'new'
     end
   end

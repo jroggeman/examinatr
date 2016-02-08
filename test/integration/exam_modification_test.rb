@@ -45,4 +45,12 @@ class ExamModificationTest < ActionDispatch::IntegrationTest
     assert has_current_path?('/exams')
   end
 
+  test "user can edit their exam" do
+    visit(exam_path(exams(:exam1)))
+    click_on('Edit exam')
+    fill_in('Name', with: 'Exam 1 edit')
+    click_on('Update Exam')
+
+    assert page.has_selector?('h1', text: 'Exam 1 edit')
+  end
 end

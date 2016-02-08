@@ -4,6 +4,7 @@
 <% if @exam.questions.count == 0 %>
   <p>No questions here :)</p>
 <% else %>
+  <p>Total <%= pluralize(@exam.total_points, 'point') %></p>
   <ol>
     <% @exam.questions.each do |q| %>
       <li><%= link_to "(#{pluralize(q.points, 'point')}) #{truncate(q.text, length: 50)}", edit_exam_question_path(@exam, q) %></li>
@@ -22,6 +23,7 @@
   <hr>
 
     <%= link_to "Render exam", render_for_print_exam_path(@exam, format: :pdf), class: 'btn btn-primary btn-block' %>
+    <%= link_to "Edit exam", edit_exam_path(@exam), class: 'btn btn-primary btn-block' %>
 
     <%= link_to "Delete exam",
                 exam_path(@exam),

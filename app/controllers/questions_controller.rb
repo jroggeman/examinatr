@@ -42,6 +42,11 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def destroy
+    @question.destroy! if @question
+    redirect_to exam_path(@exam)
+  end
+
   private
 
   def question_params

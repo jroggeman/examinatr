@@ -1,6 +1,6 @@
 class Exam < ActiveRecord::Base
   belongs_to :user
-  has_many :questions
+  has_many :questions, -> { order(:number) }
   validates :name, presence: true
   validates :user, presence: true
 

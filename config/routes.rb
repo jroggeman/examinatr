@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :exams do
     # Questions are sub-resource
-    resources :questions, except: [:index, :destroy]
+    resources :questions, except: [:index]
 
     # Explicit render path
     get 'render_for_print', on: :member

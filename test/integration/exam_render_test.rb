@@ -10,6 +10,6 @@ class ExamRenderTest < ActionDispatch::IntegrationTest
     click_on('Exam 1')
     click_on('Render exam')
 
-    assert has_current_path?(render_for_print_exam_path(exams(:exam1)))
+    assert has_current_path?(render_for_print_exam_path(exams(:exam1), format: :pdf))
   end
 end

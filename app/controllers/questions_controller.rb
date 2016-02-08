@@ -15,7 +15,11 @@ class QuestionsController < ApplicationController
 
     if @question.save
       flash[:success] = 'Question added!'
-      redirect_to edit_exam_question_path(@exam, @question)
+      if params[:commit] == "Save"
+        redirect_to edit_exam_question_path(@exam, @question)
+      else
+        redirect_to new_exam_question_path(@exam)
+      end
     else
       flash.now[:error] = 'Couldn\'t create question :/'
       render 'new'

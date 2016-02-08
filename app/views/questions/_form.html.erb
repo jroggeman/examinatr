@@ -18,7 +18,11 @@
       </div>
 
       <div class="col-md-4">
-        <%= f.submit "Save", class: 'btn btn-success btn-block' %>
+        <% if @question.number > @exam.questions.count %>
+          <%= f.submit "Save and next", class: 'btn btn-success btn-block' %>
+        <% else %>
+          <%= f.submit "Save", class: 'btn btn-success btn-block'  %>
+        <% end %>
       </div>
 
       <div class="col-md-4">
@@ -27,7 +31,7 @@
         <% elsif @question.number == @exam.questions.count %>
           <%= link_to "New", new_exam_question_path(@exam), class: 'btn btn-primary btn-block' %>
         <% else %>
-          <button class="btn btn-primary btn-block" disabled="disabled">New</button>
+          <%= f.submit "Save", class: 'btn btn-primary btn-block'  %>
         <% end %>
       </div>
     </div>

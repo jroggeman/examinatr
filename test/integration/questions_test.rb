@@ -85,4 +85,19 @@ class QuestionsTest < ActionDispatch::IntegrationTest
     assert page.has_selector?('a', text: 'Back to exams')
     assert_not page.has_selector?('a', text: 'Previous')
   end
+
+  test "Can continue adding questions after adding one" do
+    visit(exam_path(exams(:exam1)))
+
+    click_on('Add Questions')
+    assert page.has_selector?('h3', text: 'Question 3')
+    assert_difference 'Question.count', 1 do
+      fill_in('Points', with: 5)
+      fill_in('Text', with: 'New question test')
+      click_on('Save and next')
+    end
+
+    assert has_current_path?(new_exam_question_path(exams(:exam1)))
+    assert page.has_selector?('h3', text: 'Question 4')
+  end
 end

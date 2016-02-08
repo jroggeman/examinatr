@@ -16,6 +16,10 @@ gem 'bootstrap-sass'
 # Rendering questions
 gem 'redcarpet'
 
+# Rendering PDFs
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
 # gem 'capistrano-rails', group: :development
 
 

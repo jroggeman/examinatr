@@ -21,7 +21,7 @@
 
   <hr>
 
-    <%= link_to "Render exam", render_for_print_exam_path(@exam), class: 'btn btn-primary btn-block' %>
+    <%= link_to "Render exam", render_for_print_exam_path(@exam, format: :pdf), class: 'btn btn-primary btn-block' %>
 
     <%= link_to "Delete exam",
                 exam_path(@exam),

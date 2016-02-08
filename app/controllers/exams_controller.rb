@@ -9,6 +9,10 @@ class ExamsController < ApplicationController
   end
 
   def render_for_print
+    respond_to do |format|
+      format.html
+      format.pdf { render pdf: 'exam.pdf' }
+    end
   end
 
   def new

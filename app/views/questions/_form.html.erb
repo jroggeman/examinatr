@@ -1,5 +1,9 @@
 <%= form_for [@exam, @question] do |f| %>
   <div class="form-group">
+    <%= f.label :total_points, class: 'control-label' %>
+    <p class="form-control-static"><%= @exam.total_points %></p>
+  </div>
+  <div class="form-group">
     <%= f.label :points, class: 'control-label ' %>
     <%= f.number_field :points, class: 'form-control' %>
   </div>

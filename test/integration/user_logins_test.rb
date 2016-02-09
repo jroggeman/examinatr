@@ -55,6 +55,6 @@ class UserLoginsTest < ActionDispatch::IntegrationTest
 
     visit('/logout')
 
-    assert page.has_content?("Log In")
+    assert has_current_path?('/')
   end
 end

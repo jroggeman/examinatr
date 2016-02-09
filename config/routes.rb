@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'sessions#new'
+  root 'static_pages#home'
 
   resources :users, only: [:new, :create]
 

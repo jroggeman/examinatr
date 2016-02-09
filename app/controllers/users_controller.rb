@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
   skip_authentication only: [:new, :create]
 
-  def index
-    @users = User.all
-  end
-
   def new
     @user = User.new
   end

@@ -20,11 +20,11 @@ gem 'redcarpet'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
-gem 'ember-cli-rails'
+# gem 'capistrano-rails', group: :development
+
 
 group :development do
   gem 'byebug'
-  gem 'capistrano-rails'
 end
 
 group :development, :test do

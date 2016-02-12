@@ -18,9 +18,4 @@ Rails.application.routes.draw do
 
   # User Management
   get 'register' => 'users#new'
-
-  # Ember wildcard route
-  #get '/api/v1' => 'ember#bootstrap'
-  #get '/api/v1/*path' => 'ember#bootstrap'
-  mount_ember_app :frontend, to: '/api/v1/'
 end

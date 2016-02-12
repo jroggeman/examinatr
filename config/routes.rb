@@ -18,4 +18,7 @@ Rails.application.routes.draw do
 
   # User Management
   get 'register' => 'users#new'
+
+  # Ember API for SPA
+  mount_ember_app :frontend, to: '/api/v1'
 end

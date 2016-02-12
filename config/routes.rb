@@ -20,12 +20,12 @@ Rails.application.routes.draw do
   get 'register' => 'users#new'
 
   # Ember API for SPA
-  # mount_ember_app :frontend, to: '/api/v1'
+  mount_ember_app :frontend, to: '/ember'
 
   # API
   scope '/api' do
     scope '/v1' do
-      resources :exams
+      resources :exams, defaults: { format: 'json' }
     end
   end
 end

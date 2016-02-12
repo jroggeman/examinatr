@@ -3,9 +3,17 @@ class ExamsController < ApplicationController
 
   def index
     @exams = current_user.exams
+    respond_to do |format|
+      format.html
+      format.json { render json: @exams}
+    end
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @exam }
+    end
   end
 
   def render_for_print

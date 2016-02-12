@@ -21,6 +21,9 @@ gem 'wkhtmltopdf-binary'
 # Ember
 gem 'ember-cli-rails'
 
+# Custome serialization for API
+gem 'active_model_serializers', github: "rails-api/active_model_serializers"
+
 group :development do
   gem 'byebug'
   gem 'capistrano-rails'

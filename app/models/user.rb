@@ -6,4 +6,17 @@ class User < ActiveRecord::Base
 
   # Should have password and confirmation when creating user
   validates :password, presence: true, length: { minimum: 6 }, on: :create
+
+  before_create do |u|
+    u.api_key = User.generate_api_key
+  end
+
+  private
+
+  def self.generate_api_key
+    loop do
+      token = SecureRandom.base64.tr('+/=', 'Qrt')
+      break token unless User.exists?(api_key: token)
+    end
+  end
 end

@@ -1,9 +1,11 @@
-class Api::V1::ExamsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+class Api::V1::ExamsController < Api::V1::BaseController
+  # TODO: All should be json
+  # respond_to :json
 
   before_action :set_exam, only: [:show]
+
   def index
-    @exams = current_user.exams
+    @exams = @user.exams
     render json: @exams
   end
 

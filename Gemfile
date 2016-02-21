@@ -25,13 +25,13 @@ gem 'ember-cli-rails'
 gem 'active_model_serializers', github: "rails-api/active_model_serializers"
 
 group :development do
-  gem 'byebug'
   gem 'capistrano-rails'
 end
 
 group :development, :test do
   gem 'sqlite3'
   gem 'spring'
+  gem 'byebug'
 
   # Better irb and debugging
   gem 'pry-rails'

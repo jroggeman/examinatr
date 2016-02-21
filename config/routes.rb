@@ -19,13 +19,13 @@ Rails.application.routes.draw do
   # User Management
   get 'register' => 'users#new'
 
-  # Ember API for SPA
+  # Temporary ember mount point
   mount_ember_app :frontend, to: '/ember'
 
   # API
-  scope '/api' do
-    scope '/v1' do
-      resources :exams, defaults: { format: 'json' }
+  namespace :api do
+    namespace :v1 do
+      resources :exams, except: [:new, :edit], defaults: { format: 'json' }
     end
   end
 end

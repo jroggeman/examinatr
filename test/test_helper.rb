@@ -27,4 +27,8 @@ class ActionDispatch::IntegrationTest
     fill_in('Password', with: password)
     click_on('Log In')
   end
+
+  def json
+    JSON.parse(response.body)
+  end
 end

@@ -3,17 +3,9 @@ class ExamsController < ApplicationController
 
   def index
     @exams = current_user.exams
-    respond_to do |format|
-      format.html
-      format.json { render json: @exams}
-    end
   end
 
   def show
-    respond_to do |format|
-      format.html
-      format.json { render json: @exam }
-    end
   end
 
   def render_for_print
@@ -62,7 +54,7 @@ class ExamsController < ApplicationController
   private
 
   def exam_params
-    params.require(:exam).permit(:name)
+    params.require(:exam).permit(:name, :user)
   end
 
   def set_exam

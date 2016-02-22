@@ -76,6 +76,14 @@ class ExamApiTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "should not destroy other user's exam" do
+    exam = users(:jim).exams.first
+
+    assert_no_difference 'Exam.count' do
+      delete "/api/v1/exams/#{exam.id}", nil, @headers
+    end
+  end
+
   private
 
   def exam_params

@@ -29,6 +29,24 @@ ActiveRecord::Schema.define(version: 20160221212940) do
   end
 
   add_index "exam_versions", ["exam_id"], name: "index_exam_versions_on_exam_id"
+ActiveRecord::Schema.define(version: 20160206184029) do
+
+  create_table "courses", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "courses", ["name"], name: "index_courses_on_name", unique: true
+
+  create_table "exam_versions", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "exam_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "exam_versions", ["exam_id"], name: "index_exam_versions_on_exam_id"
 
   create_table "exams", force: :cascade do |t|
     t.string   "name"
@@ -58,6 +76,7 @@ ActiveRecord::Schema.define(version: 20160221212940) do
     t.integer  "exam_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "answer"
   end
 
   add_index "questions", ["exam_id"], name: "index_questions_on_exam_id"

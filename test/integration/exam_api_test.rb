@@ -33,11 +33,8 @@ class ExamApiTest < ActionDispatch::IntegrationTest
 
     assert exam.valid?
 
-    serializer = ExamSerializer.new(exam)
-    serialization = ActiveModel::Serializer::Adapter.create(serializer)
-
     assert_difference 'Exam.count', 1 do
-      post '/api/v1/exams.json', serialization.to_json, @headers
+      post '/api/v1/exams.json', serialized_json(exam), @headers
     end
 
     assert_not_nil users(:tom).exams.find_by(name: "JSON Exam")
@@ -48,10 +45,7 @@ class ExamApiTest < ActionDispatch::IntegrationTest
 
     exam.name = "Updated via JSON"
 
-    serializer = ExamSerializer.new(exam)
-    serialization = ActiveModel::Serializer::Adapter.create(serializer)
-
-    patch "/api/v1/exams/#{exam.id}", serialization.to_json, @headers
+    patch "/api/v1/exams/#{exam.id}", serialized_json(exam), @headers
 
     assert_equal "Updated via JSON", Exam.find(exam.id).name
   end
@@ -60,10 +54,8 @@ class ExamApiTest < ActionDispatch::IntegrationTest
     exam = users(:jim).exams.first
 
     exam.name = "Won't work"
-    serializer = ExamSerializer.new(exam)
-    serialization = ActiveModel::Serializer::Adapter.create(serializer)
 
-    patch "/api/v1/exams/#{exam.id}", serialization.to_json, @headers
+    patch "/api/v1/exams/#{exam.id}", serialized_json(exam), @headers
 
     assert_nil Exam.find_by(name: "Won't work")
   end
@@ -88,5 +80,11 @@ class ExamApiTest < ActionDispatch::IntegrationTest
 
   def exam_params
     ActiveModelSerializers::Deserialization.jsonapi_parse(json)
+  end
+
+  def serialized_json(exam)
+    serializer = ExamSerializer.new(exam)
+    serialization = ActiveModel::Serializer::Adapter.create(serializer)
+    serialization.to_json
   end
 end

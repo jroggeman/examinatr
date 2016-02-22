@@ -24,4 +24,8 @@ class Api::V1::BaseController < ApplicationController
       @user = User.where(api_key: token).first
     end
   end
+
+  def api_user
+    @user
+  end
 end

@@ -2,12 +2,11 @@ require 'test_helper'
 
 class ExamApiTest < ActionDispatch::IntegrationTest
   setup do
-    # Capybara uses separate session, so must login via POST
-    post '/login', session: { username: users(:tom).username, password: "123456" }
+    @headers ||= { authorization: "Token token=#{users(:tom).api_key}", 'CONTENT_TYPE' => 'application/json' }
   end
 
   test "should get all exams" do
-    get '/api/v1/exams.json'
+    get '/api/v1/exams.json', nil, @headers
 
     assert_response :success
 
@@ -15,7 +14,7 @@ class ExamApiTest < ActionDispatch::IntegrationTest
   end
 
   test "should get specific exam" do
-    get "/api/v1/exams/#{exams(:exam1).id}.json"
+    get "/api/v1/exams/#{exams(:exam1).id}.json", nil, @headers
 
     assert_response :success
 
@@ -23,7 +22,7 @@ class ExamApiTest < ActionDispatch::IntegrationTest
   end
 
   test "should not get another persons exam" do
-    get "/api/v1/exams/#{exams(:jim_exam).id}.json"
+    get "/api/v1/exams/#{exams(:jim_exam).id}.json", nil, @headers
 
     # TODO This should be handled better
     assert_redirected_to exams_path
@@ -37,14 +36,35 @@ class ExamApiTest < ActionDispatch::IntegrationTest
     serializer = ExamSerializer.new(exam)
     serialization = ActiveModel::Serializer::Adapter.create(serializer)
 
-    puts serialization.to_json
+    assert_difference 'Exam.count', 1 do
+      post '/api/v1/exams.json', serialization.to_json, @headers
+    end
+  end
 
-    post '/api/v1/exams.json', serialization.to_json
+  test "should be able to update exam" do
+    exam = users(:tom).exams.first
+
+    exam.name = "Updated via JSON"
+
+    serializer = ExamSerializer.new(exam)
+    serialization = ActiveModel::Serializer::Adapter.create(serializer)
+
+    patch "/api/v1/exams/#{exam.id}", serialization.to_json, @headers
+
+    assert_equal "Updated via JSON", Exam.find(exam.id).name
+  end
+
+  test "should be able to destroy exam" do
+    exam = users(:tom).exams.first
+
+    assert_difference 'Exam.count', -1 do
+      delete "/api/v1/exams/#{exam.id}", nil, @headers
+    end
   end
 
   private
 
-    def exam_params
-      ActiveModelSerializers::Deserialization.jsonapi_parse(json)
-    end
+  def exam_params
+    ActiveModelSerializers::Deserialization.jsonapi_parse(json)
+  end
 end

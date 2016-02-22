@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20160222165540) do
     t.integer  "exam_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "answer"
+    t.text     "answer"
   end
 
   add_index "questions", ["exam_id"], name: "index_questions_on_exam_id"

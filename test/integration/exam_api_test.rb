@@ -39,6 +39,8 @@ class ExamApiTest < ActionDispatch::IntegrationTest
     assert_difference 'Exam.count', 1 do
       post '/api/v1/exams.json', serialization.to_json, @headers
     end
+
+    assert_not_nil users(:tom).exams.find_by(name: "JSON Exam")
   end
 
   test "should be able to update exam" do
@@ -52,6 +54,18 @@ class ExamApiTest < ActionDispatch::IntegrationTest
     patch "/api/v1/exams/#{exam.id}", serialization.to_json, @headers
 
     assert_equal "Updated via JSON", Exam.find(exam.id).name
+  end
+
+  test "should not update other user's exam" do
+    exam = users(:jim).exams.first
+
+    exam.name = "Won't work"
+    serializer = ExamSerializer.new(exam)
+    serialization = ActiveModel::Serializer::Adapter.create(serializer)
+
+    patch "/api/v1/exams/#{exam.id}", serialization.to_json, @headers
+
+    assert_nil Exam.find_by(name: "Won't work")
   end
 
   test "should be able to destroy exam" do

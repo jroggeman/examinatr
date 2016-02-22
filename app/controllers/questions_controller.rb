@@ -50,7 +50,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:text, :points, :exam)
+    params.require(:question).permit(:text, :points, :exam, :answer)
   end
 
   def set_exam

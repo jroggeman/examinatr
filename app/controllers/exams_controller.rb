@@ -9,6 +9,9 @@ class ExamsController < ApplicationController
   end
 
   def render_for_print
+    puts params
+    @render_answers = true if params[:answer_key] == "true"
+
     respond_to do |format|
       format.html
       format.pdf { render pdf: 'exam.pdf' }

@@ -1,3 +1,6 @@
 <h1>Question <%= @question.number %></h1>
 <h3><%= pluralize(@question.points, 'point') %></h3>
 <p><%= @question.text %></p>
+<% if not @question.answer.nil? %>
+  <%= @question.answer %>
+<% end %>

@@ -30,7 +30,10 @@ module Authentication extend ActiveSupport::Concern
 
   # When included, redirect the user if they aren't logged in
   def require_authentication
-    redirect_to login_url unless current_user
+    respond_to do |format|
+      format.any(:html, :pdf) { redirect_to login_url unless current_user }
+      format.json { head :unauthorized unless current_user }
+    end
   end
 
 end

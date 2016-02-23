@@ -2,7 +2,7 @@ class Api::V1::ExamsController < Api::V1::BaseController
   before_action :set_exam, only: [:show, :update, :destroy]
 
   def index
-    @exams = @user.exams
+    @exams = current_user.exams
     render json: @exams
   end
 

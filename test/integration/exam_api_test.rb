@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ExamApiTest < ActionDispatch::IntegrationTest
   setup do
-    @headers ||= { authorization: "Token token=#{users(:tom).api_key}", 'CONTENT_TYPE' => 'application/json' }
+    @headers ||= { 'CONTENT_TYPE' => 'application/json' }
     api_login_as(users(:tom), '123456')
   end
 
@@ -78,6 +78,8 @@ class ExamApiTest < ActionDispatch::IntegrationTest
   end
 
   test "should not use API without auth token" do
+    get '/logout'
+
     get '/api/v1/exams.json'
 
     assert_response :unauthorized

@@ -2,9 +2,6 @@ class Api::V1::BaseController < ApplicationController
   # TODO: INSECURE
   #protect_from_forgery with: :null_session
 
-  # TODO: Make authentication more modular
-  #skip_authentication
-
   #before_action :destroy_session
   #before_action :authenticate
 

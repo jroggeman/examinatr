@@ -1,7 +1,4 @@
 class Api::V1::ExamsController < Api::V1::BaseController
-  # TODO: All should be json
-  # respond_to :json
-
   before_action :set_exam, only: [:show, :update, :destroy]
 
   def index

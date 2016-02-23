@@ -9,6 +9,7 @@ class Api::V1::BaseController < ApplicationController
 
   private
 
+  # Thanks to https://labs.kollegorna.se/blog/2015/04/build-an-api-now/
   def api_error(status: 500, errors: [])
     unless Rails.env.production?
       puts errors.full_messages if errors.respond_to? :full_messages
@@ -31,9 +32,5 @@ class Api::V1::BaseController < ApplicationController
 
   def api_user
     @user
-  end
-
-  def not_found
-    return api_error(status: 404, errors: 'Resource not found')
   end
 end

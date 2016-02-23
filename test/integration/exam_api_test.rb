@@ -3,6 +3,7 @@ require 'test_helper'
 class ExamApiTest < ActionDispatch::IntegrationTest
   setup do
     @headers ||= { authorization: "Token token=#{users(:tom).api_key}", 'CONTENT_TYPE' => 'application/json' }
+    api_login_as(users(:tom), '123456')
   end
 
   test "should get all exams" do

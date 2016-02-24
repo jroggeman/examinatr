@@ -1,7 +1,7 @@
 <h1>All Exams</h1>
 <ul>
 {{#each model as |exam|}}
-<li>{{exam.name}}</li>
+<li>{{#link-to "exams.show" exam}}{{exam.name}}{{/link-to}}</li>
 {{/each}}
 </ul>
 <hr>

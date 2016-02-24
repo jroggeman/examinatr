@@ -6,7 +6,9 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('exams');
+  this.route('exams', { path: '/exams' });
+  this.route('exams.show', { path: '/exams/:exam_id' });
+
   this.route('users');
   this.route('question');
 });

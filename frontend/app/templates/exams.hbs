@@ -6,3 +6,12 @@
 </ul>
 <hr>
 <button class="btn btn-primary btn-block">Add Exam</button>
+{{#bs-modal open=openNewExam title="Add Exam" body=false footer=false}}
+    {{#bs-modal-body}}
+        {{#bs-form model=this}}
+            {{bs-form-element controlType="text" label="Exam name"
+            property="name"}}
+        {{/bs-form}}
+    {{/bs-modal-body}}
+    {{bs-modal-footer closeTitle="Cancel" submitTitle="Create Exam"}}
+{{/bs-modal}}

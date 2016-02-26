@@ -2,9 +2,6 @@ class Api::V1::BaseController < ApplicationController
   # TODO: INSECURE
   #protect_from_forgery with: :null_session
 
-  #before_action :destroy_session
-  #before_action :authenticate
-
   private
 
   # Thanks to https://labs.kollegorna.se/blog/2015/04/build-an-api-now/

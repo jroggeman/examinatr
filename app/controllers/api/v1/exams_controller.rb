@@ -11,11 +11,12 @@ class Api::V1::ExamsController < Api::V1::BaseController
   end
 
   def create
+    puts params
     @exam = Exam.new(exam_params)
     @exam.user = api_user
 
     if @exam.save
-      redirect_to exam_path(@exam)
+      render json: @exam
     else
       render 'new'
     end

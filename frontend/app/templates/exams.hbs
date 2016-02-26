@@ -1,11 +1,17 @@
-<h1>All Exams</h1>
-<ul>
+<div class="col-md-3">
+<ul class="list-group">
+<li class="list-group-item">Add new exam</li>
 {{#each model as |exam|}}
-<li>{{#link-to "exams.show" exam}}{{exam.name}}{{/link-to}}</li>
+<li class="list-group-item">{{#link-to "exams.show" exam}}{{exam.name}}{{/link-to}}</li>
 {{/each}}
 </ul>
 <hr>
 <button class="btn btn-primary btn-block">Add Exam</button>
+</div>
+<div class="col-md-9">
+{{outlet}}
+</div>
+
 {{#bs-modal open=openNewExam title="Add Exam" body=false footer=false}}
     {{#bs-modal-body}}
         {{#bs-form model=this}}

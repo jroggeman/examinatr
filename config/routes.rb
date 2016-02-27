@@ -25,8 +25,11 @@ Rails.application.routes.draw do
   # API
   namespace :api do
     namespace :v1 do
-      resources :exams, except: [:new, :edit], defaults: { format: 'json' }
+      resources :exams, except: [:new, :edit], defaults: { format: 'json' } do
+        resources :questions, only: [:show], defaults: { format: 'json' }
+      end
 
+      resources :questions, only: [:show], defaults: { format: 'json' }
       post 'login' => 'sessions#create'
     end
   end

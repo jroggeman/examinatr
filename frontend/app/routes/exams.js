@@ -15,6 +15,7 @@ export default Ember.Route.extend({
             exam.save();
 
             this.get('controller').set('name', '');
+            this.transitionTo('exams.show', exam);
         }
     }
 });

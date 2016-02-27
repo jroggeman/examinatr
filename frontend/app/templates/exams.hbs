@@ -6,7 +6,7 @@
             "createExam"}}>Add</button>
         </li>
         {{#each model as |exam|}}
-            <li class="list-group-item">{{#link-to "exams.show" exam}}{{exam.name}}{{/link-to}}</li>
+            {{#link-to "exams.show" exam class="list-group-item"}}{{exam.name}}{{/link-to}}
         {{/each}}
     </ul>
 </div>

@@ -1,8 +1,10 @@
-<div class="container">
 <h1>{{model.name}}</h1>
-<ul>
-{{#each model.questions as |question|}}
-<li>{{question.text}}</li>
-{{/each}}
+<ul class="list-group">
+    {{#each model.questions as |question|}}
+    <li class="list-group-item">
+        {{question.number}}.&nbsp;&nbsp;
+        <em>({{question.points}} {{pluralize-points question.points}})</em> &nbsp;
+        {{question.text}}
+    </li>
+    {{/each}}
 </ul>
-</div>

@@ -9,6 +9,7 @@ Router.map(function() {
   this.route('exams', function() {
     this.route('show', { path: ':exam_id' }, function() {
       this.route('question', { path: 'questions/:question_id' });
+      this.route('new', { path: 'questions/new' });
     });
 
     this.route('users');

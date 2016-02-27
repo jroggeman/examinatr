@@ -1,6 +1,9 @@
 <div class="col-md-6">
     <h1>{{model.name}}</h1>
     <ul class="list-group">
+        {{#link-to "exams.show.new" class="list-group-item"}}
+        <em>New question</em>
+        {{/link-to}}
         {{#each model.questions as |question|}}
             {{#link-to "exams.show.question" question class="list-group-item"}}
                 {{question.number}}.&nbsp;&nbsp;

@@ -8,7 +8,9 @@
             "createExam"}}>Add</button>
         </li>
         {{#each model as |exam|}}
-            {{#link-to "exams.show" exam class="list-group-item"}}{{exam.name}}{{/link-to}}
+            {{#link-to "exams.show" exam
+            class="list-group-item"}}{{exam.name}}<span
+            class="badge">{{exam.totalPoints}}</span>{{/link-to}}
         {{/each}}
     </ul>
 </div>

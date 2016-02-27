@@ -1,11 +1,12 @@
+<div class="col-md-6">
 <h1>{{model.name}}</h1>
 <ul class="list-group">
     {{#each model.questions as |question|}}
-    <li class="list-group-item">
-        {{question.number}}.&nbsp;&nbsp;
-        <em>({{question.points}} {{pluralize-points question.points}})</em> &nbsp;
-        {{question.text}}
-    </li>
+        {{#link-to "exams.show.question" question class="list-group-item"}}
+            {{question.number}}.&nbsp;&nbsp;
+            <em>({{question.points}} {{pluralize-points question.points}})</em> &nbsp;
+            {{question.text}}
+        {{/link-to}}
     {{/each}}
 </ul>
 <hr>
@@ -17,3 +18,6 @@
         <button class="btn btn-primary btn-block">Render Answer Key</button>
     </div>
 </div>
+<hr>
+</div>
+{{outlet}}

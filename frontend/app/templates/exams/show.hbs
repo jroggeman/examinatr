@@ -1,4 +1,8 @@
 <div class="container">
 <h1>{{model.name}}</h1>
-<p>This is an exam</p>
+<ul>
+{{#each model.questions as |question|}}
+<li>{{question.text}}</li>
+{{/each}}
+</ul>
 </div>

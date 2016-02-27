@@ -1,6 +1,5 @@
 <div class="col-md-3">
-    <!-- Alignment... -->
-    <h1>&nbsp;</h1>
+    <h1>Exams</h1>
 
     <ul class="list-group">
         <li class="list-group-item">
@@ -9,10 +8,10 @@
             "createExam"}}>Add</button>
         </li>
         {{#each model as |exam|}}
-            {{#link-to "exams.show" exam class="list-group-item"}}{{exam.name}}{{/link-to}}
+            {{#link-to "exams.show" exam
+            class="list-group-item"}}{{exam.name}}<span
+            class="badge">{{exam.totalPoints}}</span>{{/link-to}}
         {{/each}}
     </ul>
 </div>
-<div class="col-md-9">
 {{outlet}}
-</div>

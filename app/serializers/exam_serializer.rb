@@ -1,5 +1,6 @@
 class ExamSerializer < ActiveModel::Serializer
-  attributes :name
+  attribute :name
+  attribute :total_points, key: "total-points"
 
   has_many :questions
 end

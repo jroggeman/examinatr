@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   # Temporary ember mount point
   mount_ember_app :frontend, to: '/ember'
 
+  get '/ember/exams/:id.pdf' => 'exams#render_for_print'
+
   # API
   namespace :api do
     namespace :v1 do

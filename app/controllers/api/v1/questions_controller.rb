@@ -20,6 +20,21 @@ class Api::V1::QuestionsController < Api::V1::BaseController
     end
   end
 
+  def update
+    #byebug
+    #puts params
+    @question = Question.find_by(id: params[:id])
+    #puts @question
+
+    api_error(status: 404) if @question.nil?
+
+    if @question.update_attributes(question_params)
+      render json: @question
+    else
+      api_error(status: 422, errors: @question.errors)
+    end
+  end
+
   private
 
   def question_params

@@ -5,7 +5,20 @@ class Api::V1::QuestionsController < Api::V1::BaseController
     render json: @question
   end
 
+  def create
+    @question = Question.new(question_params)
+    if @question.save
+      render json: @question
+    else
+      api_error(status: 422, errors: @question.errors)
+    end
+  end
+
   private
+
+  def question_params
+    params.require(:data).require(:attributes).permit(:number, :text, :answer, :points, :exam_id)
+  end
 
   def set_exam
     @exam = Exam.find_by(id: params[:exam_id])

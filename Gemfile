@@ -41,6 +41,9 @@ group :test do
   # Integration tests
   gem 'capybara'
 
+  # Enable javascript for SPA
+  gem 'selenium-webdriver'
+
   # View headless integration test pages for debugging
   gem 'launchy'
 

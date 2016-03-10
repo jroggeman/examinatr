@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   # Temporary ember mount point
   mount_ember_app :frontend, to: '/ember'
 
+  get '/ember/exams/:id.pdf' => 'exams#render_for_print'
+
   # API
   namespace :api do
     namespace :v1 do
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
         resources :questions, only: [:show], defaults: { format: 'json' }
       end
 
-      resources :questions, only: [:show], defaults: { format: 'json' }
+      resources :questions, only: [:show, :create, :update], defaults: { format: 'json' }
       post 'login' => 'sessions#create'
     end
   end

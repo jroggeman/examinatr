@@ -6,12 +6,6 @@ moduleForModel('exam', 'Unit | Model | exam', {
     needs: ['model:user', 'model:question']
 });
 
-test('it exists', function(assert) {
-  let model = this.subject();
-  // let store = this.store();
-  assert.ok(!!model);
-});
-
 test('totalPoints', function(assert) {
     let store = this.store();
     var result = -1;

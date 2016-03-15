@@ -7,9 +7,6 @@ export default DS.Model.extend({
 
   questions: DS.hasMany('question', { async: true }),
 
-  //points: Ember.computed.mapBy('questions', 'points'),
-  //totalPoints: Ember.computed.sum('points'),
-
   totalPoints: Ember.computed('questions.@each.points', function() {
       var questions = this.get('questions');
       return questions.reduce(function(prevValue, question) {

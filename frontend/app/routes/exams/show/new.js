@@ -9,8 +9,8 @@ export default Ember.Route.extend({
         createQuestion: function() {
             //var text = this.get('controller').get('text');
             var text = this.modelFor('exams.show.new').text;
-            var answer = this.modelFor('exams.show.new').answer
-            var points = this.modelFor('exams.show.new').points
+            var answer = this.modelFor('exams.show.new').answer;
+            var points = this.modelFor('exams.show.new').points;
 
             var question = this.store.createRecord('question', {
                 text: text,

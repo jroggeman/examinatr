@@ -149,7 +149,7 @@ GEM
       minitest (>= 5.0)
       ruby-progressbar
     multi_json (1.11.2)
-    mysql (2.9.1)
+    mysql2 (0.3.20)
     nenv (0.3.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -274,7 +274,7 @@ DEPENDENCIES
   launchy
   mini_backtrace
   minitest-reporters
-  mysql
+  mysql2
   pg
   pry-rails
   puma

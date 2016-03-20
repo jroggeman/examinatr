@@ -60,7 +60,7 @@ group :test do
   # Required for travis
   gem 'rake'
 
-  gem 'mysql'
+  gem 'mysql2'
 end
 
 group :development do

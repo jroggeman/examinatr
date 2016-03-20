@@ -53,4 +53,23 @@ class SpaTest < ActionDispatch::IntegrationTest
 
     assert page.has_selector?('a', text: '10 points')
   end
+
+  test "can create and delete question" do
+    visit('/ember/exams')
+    click_on('Exam 1')
+
+    click_on('New question')
+    fill_in('Points', with: '5')
+    fill_in('Text', with: 'This will be deleted')
+    fill_in('Answer', with: 'New answer')
+    click_on('Add Question')
+
+    assert page.has_selector?('a', text: 'This will be deleted')
+
+    click_on('This will be deleted')
+    click_on('Delete Question')
+    page.driver.browser.switch_to.alert.accept
+
+    assert page.has_no_selector?('a', text: 'This will be deleted')
+  end
 end

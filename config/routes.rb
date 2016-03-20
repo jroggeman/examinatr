@@ -31,7 +31,7 @@ Rails.application.routes.draw do
         resources :questions, only: [:show], defaults: { format: 'json' }
       end
 
-      resources :questions, only: [:show, :create, :update], defaults: { format: 'json' }
+      resources :questions, only: [:show, :create, :update, :destroy], defaults: { format: 'json' }
       post 'login' => 'sessions#create'
     end
   end

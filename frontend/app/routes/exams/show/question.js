@@ -7,7 +7,17 @@ export default Ember.Route.extend({
 
     actions: {
         updateQuestion: function() {
+            // TODO: Add promise callbacks
             this.modelFor('exams.show.question').save();
+        },
+        deleteQuestion: function() {
+            var route = this;
+
+            if(confirm('Are you sure you want to delete this question?')) {
+                this.modelFor('exams.show.question').destroyRecord().then(function() {
+                    route.transitionTo('exams.show');
+                });
+            }
         }
     }
 });

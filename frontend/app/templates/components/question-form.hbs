@@ -11,5 +11,15 @@
         <label for="{{concat elementId '-answer'}}">Answer</label>
         {{textarea id=(concat elementId '-answer') name="answer" value=question.answer placeholder="I don't know that!" class="form-control"}}
     </div>
-    <button class="btn btn-success btn-block">{{ submitText }}</button>
+    <button class="btn btn-success btn-block">
+        {{#if newQuestion}}
+        Add Question
+        {{else}}
+        Update Question
+        {{/if}}
+    </button>
+
+    {{#unless newQuestion}}
+    <button class="btn btn-danger btn-block" {{action "deleteQuestion" on="click"}}>Delete Question</button>
+    {{/unless}}
 </form>

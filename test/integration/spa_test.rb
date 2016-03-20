@@ -39,7 +39,7 @@ class SpaTest < ActionDispatch::IntegrationTest
 
     click_on('First question')
     fill_in('Points', with: '10')
-    click_on('Submit')
+    click_on('Add Question')
 
     visit('/ember/exams')
     click_on('Exam 1')

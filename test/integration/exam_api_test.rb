@@ -25,8 +25,7 @@ class ExamApiTest < ActionDispatch::IntegrationTest
   test "should not get another persons exam" do
     get "/api/v1/exams/#{exams(:jim_exam).id}.json", nil, @headers
 
-    # TODO This should be handled better
-    assert_redirected_to exams_path
+    assert_response :missing
   end
 
   test "should be able to create new exam" do

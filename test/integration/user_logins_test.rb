@@ -1,6 +1,14 @@
 require 'test_helper'
 
 class UserLoginsTest < ActionDispatch::IntegrationTest
+  setup do
+    Capybara.current_driver = :selenium
+  end
+
+  teardown do
+    Capybara.use_default_driver
+  end
+
   test "user can login successfully" do
     visit('/login')
 
@@ -8,7 +16,7 @@ class UserLoginsTest < ActionDispatch::IntegrationTest
     fill_in('Password', with: '123456')
     click_on('Log In')
 
-    assert page.has_content?("All Exams")
+    assert page.has_content?("Exams")
   end
 
   test "user can not login with wrong password" do
@@ -38,10 +46,10 @@ class UserLoginsTest < ActionDispatch::IntegrationTest
     fill_in('Password', with: '123456')
     click_on('Log In')
 
-    assert page.has_content?("All Exams")
+    assert page.has_content?("Exams")
 
     visit('/login')
-    assert page.has_content?("All Exams")
+    assert page.has_content?("Exams")
   end
 
   test "user is redirected to login page on logout" do
@@ -51,7 +59,7 @@ class UserLoginsTest < ActionDispatch::IntegrationTest
     fill_in('Password', with: '123456')
     click_on('Log In')
 
-    assert page.has_content?("All Exams")
+    assert page.has_content?("Exams")
 
     visit('/logout')
 

@@ -28,6 +28,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
       click_on('Register')
     end
 
-    assert page.has_content?("All Exams")
+    assert_equal exams_path, current_path
   end
 end

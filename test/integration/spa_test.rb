@@ -11,7 +11,7 @@ class SpaTest < ActionDispatch::IntegrationTest
     Capybara.use_default_driver
   end
 
-  test "Can view questions for exam" do
+  test "can view questions for exam" do
     visit('/ember/exams')
     click_on('Exam 1')
 
@@ -19,7 +19,15 @@ class SpaTest < ActionDispatch::IntegrationTest
     assert page.has_selector?('a', text: 'Second question')
   end
 
-  test "Can create question" do
+  test "can create new exam" do
+    visit('/ember/exams')
+    fill_in('exam-name', with: 'Test Exam')
+    click_on('Add')
+
+    assert page.has_selector?('h1', text: 'Test Exam')
+  end
+
+  test "can create question" do
     visit('/ember/exams')
     click_on('Exam 1')
 
@@ -32,7 +40,7 @@ class SpaTest < ActionDispatch::IntegrationTest
     assert page.has_selector?('a', text: 'This is a question')
   end
 
-  test "Can update question" do
+  test "can update question" do
     visit('/ember/exams')
     click_on('Exam 1')
 

@@ -5,11 +5,12 @@
     </div>
     <div class="form-group">
         <label for="{{concat elementId '-text'}}">Text</label>
-        {{textarea id=(concat elementId '-text') name="text" value=question.text placeholder="What is the capital of Assyria?" class="form-control"}}
+        {{textarea id=(concat elementId '-text') name="text" value=question.text placeholder="What is the capital of Assyria?" rows="12"  class="form-control"}}
     </div>
     <div class="form-group">
         <label for="{{concat elementId '-answer'}}">Answer</label>
-        {{textarea id=(concat elementId '-answer') name="answer" value=question.answer placeholder="I don't know that!" class="form-control"}}
+        {{textarea id=(concat elementId '-answer') name="answer"
+        value=question.answer placeholder="I don't know that!"class="form-control"}}
     </div>
     <button class="btn btn-success btn-block">
         {{#if newQuestion}}

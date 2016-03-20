@@ -13,10 +13,11 @@ export default Ember.Route.extend({
         deleteQuestion: function() {
             var route = this;
 
-            this.modelFor('exams.show.question').destroyRecord().then(function() {
-                // TODO: Do we need to specify the exam here?
-                route.transitionTo('exams.show');
-            });
+            if(confirm('Are you sure you want to delete this question?')) {
+                this.modelFor('exams.show.question').destroyRecord().then(function() {
+                    route.transitionTo('exams.show');
+                });
+            }
         }
     }
 });

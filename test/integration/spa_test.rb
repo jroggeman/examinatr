@@ -68,6 +68,7 @@ class SpaTest < ActionDispatch::IntegrationTest
 
     click_on('This will be deleted')
     click_on('Delete Question')
+    page.driver.browser.switch_to.alert.accept
 
     assert page.has_no_selector?('a', text: 'This will be deleted')
   end

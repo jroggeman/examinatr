@@ -21,10 +21,7 @@ class Api::V1::QuestionsController < Api::V1::BaseController
   end
 
   def update
-    #byebug
-    #puts params
     @question = Question.find_by(id: params[:id])
-    #puts @question
 
     api_error(status: 404) if @question.nil?
 
@@ -32,6 +29,18 @@ class Api::V1::QuestionsController < Api::V1::BaseController
       render json: @question
     else
       api_error(status: 422, errors: @question.errors)
+    end
+  end
+
+  def destroy
+    @question = Question.find_by(id: params[:id])
+
+    api_error(status: 404) if @question.nil?
+
+    if @question.destroy
+      render nothing: true, status: :no_content
+    else
+      api_error(status: 500)
     end
   end
 

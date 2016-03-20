@@ -20,6 +20,6 @@
     </button>
 
     {{#unless newQuestion}}
-    <button class="btn btn-danger btn-block">Delete Question</button>
+    <button class="btn btn-danger btn-block" {{action "deleteQuestion" on="click"}}>Delete Question</button>
     {{/unless}}
 </form>

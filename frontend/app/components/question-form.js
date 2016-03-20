@@ -13,6 +13,9 @@ export default Ember.Component.extend({
             this.set('points', '');
             this.set('text', '');
             this.set('answer', '');
+        },
+        deleteQuestion: function() {
+            this.sendAction('deleteAction');
         }
     }
 });

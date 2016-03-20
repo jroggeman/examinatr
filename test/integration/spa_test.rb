@@ -19,7 +19,7 @@ class SpaTest < ActionDispatch::IntegrationTest
     assert page.has_selector?('a', text: 'Second question')
   end
 
-  test "Can create exam" do
+  test "Can create question" do
     visit('/ember/exams')
     click_on('Exam 1')
 
@@ -27,7 +27,7 @@ class SpaTest < ActionDispatch::IntegrationTest
     fill_in('Points', with: '5')
     fill_in('Text', with: 'New question')
     fill_in('Answer', with: 'New answer')
-    click_on('Submit')
+    click_on('Add Question')
 
     assert page.has_selector?('a', text: 'New question')
   end

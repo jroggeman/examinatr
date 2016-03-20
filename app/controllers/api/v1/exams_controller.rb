@@ -17,18 +17,18 @@ class Api::V1::ExamsController < Api::V1::BaseController
     if @exam.save
       render json: @exam
     else
-      render 'new'
+      api_error(status: 422, errors: @exam.errors)
     end
   end
 
   def update
     @exam = Exam.find_by(params[:id])
-    redirect_to exams_path if @exam.nil?
+    api_error(status: 404, errors: @exam.errors) if @exam.nil?
 
     if @exam.update_attributes(exam_params)
-      redirect_to exam_path(@exam)
+      render json: @exam
     else
-      render 'new'
+      api_error(status: 422, errors: @exam.errors)
     end
   end
 
@@ -41,7 +41,7 @@ class Api::V1::ExamsController < Api::V1::BaseController
 
   def set_exam
     @exam = api_user.exams.find_by_id(params[:id])
-    redirect_to exams_path if @exam.nil?
+    api_error(status: 404) if @exam.nil?
   end
 
   def exam_params

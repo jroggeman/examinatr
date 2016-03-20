@@ -59,6 +59,8 @@ group :test do
 
   # Required for travis
   gem 'rake'
+
+  gem 'mysql'
 end
 
 group :development do

@@ -12,10 +12,12 @@ export default Ember.Route.extend({
                 name: name
             });
 
-            exam.save();
+            var route = this;
 
-            this.get('controller').set('name', '');
-            this.transitionTo('exams.show', exam);
+            exam.save().then(function() {
+                route.get('controller').set('name', '');
+                route.transitionTo('exams.show', exam);
+            });
         }
     }
 });

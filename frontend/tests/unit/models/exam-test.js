@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import { moduleForModel, test } from 'ember-qunit';
-//import Question from 'app/models/question';
 
 moduleForModel('exam', 'Unit | Model | exam', {
     needs: ['model:user', 'model:question']

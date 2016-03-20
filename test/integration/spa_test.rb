@@ -53,4 +53,12 @@ class SpaTest < ActionDispatch::IntegrationTest
 
     assert page.has_selector?('a', text: '10 points')
   end
+
+  test "can delete question" do
+    visit('/ember/exams')
+    click_on('Exam 1')
+
+    click_on('First question')
+    click_on('Delete Question')
+  end
 end

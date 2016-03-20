@@ -4,6 +4,7 @@ class SpaTest < ActionDispatch::IntegrationTest
   setup do
     # Need JS to test SPA
     Capybara.current_driver = :selenium
+
     login_as(users(:tom), '123456')
   end
 
@@ -25,10 +26,10 @@ class SpaTest < ActionDispatch::IntegrationTest
 
     click_on('New question')
     fill_in('Points', with: '5')
-    fill_in('Text', with: 'New question')
+    fill_in('Text', with: 'This is a question')
     fill_in('Answer', with: 'New answer')
     click_on('Add Question')
 
-    assert page.has_selector?('a', text: 'New question')
+    assert page.has_selector?('a', text: 'This is a question')
   end
 end

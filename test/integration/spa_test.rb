@@ -12,7 +12,7 @@ class SpaTest < ActionDispatch::IntegrationTest
   end
 
   test "can view questions for exam" do
-    visit('/ember/exams')
+    visit('/exams')
     click_on('Exam 1')
 
     assert page.has_selector?('a', text: 'First question')
@@ -20,7 +20,7 @@ class SpaTest < ActionDispatch::IntegrationTest
   end
 
   test "can create new exam" do
-    visit('/ember/exams')
+    visit('/exams')
     fill_in('exam-name', with: 'Test Exam')
     click_on('Add')
 
@@ -28,7 +28,7 @@ class SpaTest < ActionDispatch::IntegrationTest
   end
 
   test "can create question" do
-    visit('/ember/exams')
+    visit('/exams')
     click_on('Exam 1')
 
     click_on('New question')
@@ -41,21 +41,21 @@ class SpaTest < ActionDispatch::IntegrationTest
   end
 
   test "can update question" do
-    visit('/ember/exams')
+    visit('/exams')
     click_on('Exam 1')
 
     click_on('First question')
     fill_in('Points', with: '10')
     click_on('Update Question')
 
-    visit('/ember/exams')
+    visit('/exams')
     click_on('Exam 1')
 
     assert page.has_selector?('a', text: '10 points')
   end
 
   test "can create and delete question" do
-    visit('/ember/exams')
+    visit('/exams')
     click_on('Exam 1')
 
     click_on('New question')

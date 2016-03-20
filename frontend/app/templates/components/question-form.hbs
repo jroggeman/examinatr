@@ -11,5 +11,5 @@
         <label for="{{concat elementId '-answer'}}">Answer</label>
         {{textarea id=(concat elementId '-answer') name="answer" value=question.answer placeholder="I don't know that!" class="form-control"}}
     </div>
-    <button class="btn btn-success btn-block">Add Question</button>
+    <button class="btn btn-success btn-block">{{ submitText }}</button>
 </form>

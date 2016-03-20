@@ -2,7 +2,6 @@ require 'test_helper'
 
 class SpaTest < ActionDispatch::IntegrationTest
   setup do
-    # Need JS to test SPA
     Capybara.current_driver = :selenium
 
     login_as(users(:tom), '123456')
@@ -39,7 +38,7 @@ class SpaTest < ActionDispatch::IntegrationTest
 
     click_on('First question')
     fill_in('Points', with: '10')
-    click_on('Add Question')
+    click_on('Update Question')
 
     visit('/ember/exams')
     click_on('Exam 1')

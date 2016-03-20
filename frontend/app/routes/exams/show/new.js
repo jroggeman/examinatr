@@ -2,9 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
     model: function() {
-        //return this.store.createRecord('question');
-        // TODO: Why does a new record create [object]s?
-        return {};
+        return this.store.createRecord('question');
     },
 
     actions: {

@@ -32,4 +32,18 @@ class SpaTest < ActionDispatch::IntegrationTest
 
     assert page.has_selector?('a', text: 'This is a question')
   end
+
+  test "Can update question" do
+    visit('/ember/exams')
+    click_on('Exam 1')
+
+    click_on('First question')
+    fill_in('Points', with: '10')
+    click_on('Submit')
+
+    visit('/ember/exams')
+    click_on('Exam 1')
+
+    assert page.has_selector?('a', text: '10 points')
+  end
 end

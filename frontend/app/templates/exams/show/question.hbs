@@ -1,8 +1,4 @@
 <div class="col-md-6">
 <h1>Question {{model.number}}</h1>
-{{#em-form model=model action="updateQuestion"}}
-    {{em-input property="points" label="Points" placeholder="5"}}
-    {{em-text property="text" label="Text" placeholder="Question text"}}
-    {{em-text property="answer" label="Answer" placeholder="Answer text"}}
-{{/em-form}}
+{{question-form submitAction='updateQuestion' question=model}}
 </div>

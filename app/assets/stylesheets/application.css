@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+.name-tag {
+    float: right;
+    font-size: 12pt;
+    font-weight: normal;
+}
+
+.question {
+    page-break-inside: avoid;
+}

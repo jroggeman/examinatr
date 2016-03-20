@@ -1,0 +1,17 @@
+<div class="col-md-3">
+    <h1>Exams</h1>
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            {{input type="text" name="exam-name" class="new-exam" placeholder="New exam" value=name}}
+            <button class="btn btn-primary btn-sm new-exam-button" {{action
+            "createExam"}}>Add</button>
+        </li>
+        {{#each model as |exam|}}
+            {{#link-to "exams.show" exam
+            class="list-group-item"}}{{exam.name}}<span
+            class="badge">{{exam.totalPoints}}</span>{{/link-to}}
+        {{/each}}
+    </ul>
+</div>
+{{outlet}}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @exam.name %></title>
+
+  <%= wicked_pdf_stylesheet_link_tag 'application' %>
+  <%= wicked_pdf_javascript_include_tag 'application' %>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="container">
+    <div>
+      <h1><%= @exam.name %><span class="name-tag">Name______________________________</span></h1>
+    </div>
+    <ol>
+    <% @exam.questions.each do |q| %>
+      <li class="question">(<%= pluralize(q.points, 'point')%>) <%= parse(q.text) %></li>
+      <% if @render_answers and not q.answer.nil? %>
+        <p style="color: red"><%= q.answer %></p>
+      <% end %>
+    <% end %>
+    </ol>
+  </div>
+</body>
+</html>

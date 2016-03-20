@@ -6,6 +6,12 @@ class ExamsController < ApplicationController
   end
 
   def show
+    @render_answers = true if params[:answer_key] == "true"
+
+    respond_to do |format|
+      format.html
+      format.pdf { render pdf: 'exam.pdf' }
+    end
   end
 
   def render_for_print
@@ -56,7 +62,7 @@ class ExamsController < ApplicationController
   private
 
   def exam_params
-    params.require(:exam).permit(:name)
+    params.require(:exam).permit(:name, :user)
   end
 
   def set_exam

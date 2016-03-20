@@ -27,4 +27,12 @@ class ActionDispatch::IntegrationTest
     fill_in('Password', with: password)
     click_on('Log In')
   end
+
+  def api_login_as(user, password)
+    post '/login', session: { username: user.username, password: password }
+  end
+
+  def json
+    JSON.parse(response.body)
+  end
 end

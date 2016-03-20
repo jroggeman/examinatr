@@ -4,10 +4,8 @@ gem 'rails', '4.2.5'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-# gem 'therubyracer', platforms: :ruby
 
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
@@ -20,16 +18,20 @@ gem 'redcarpet'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
-# gem 'capistrano-rails', group: :development
+# Ember
+gem 'ember-cli-rails'
 
+# Custome serialization for API
+gem 'active_model_serializers', github: "rails-api/active_model_serializers"
 
 group :development do
-  gem 'byebug'
+  gem 'capistrano-rails'
 end
 
 group :development, :test do
   gem 'sqlite3'
   gem 'spring'
+  gem 'byebug'
 
   # Better irb and debugging
   gem 'pry-rails'
@@ -38,6 +40,9 @@ end
 group :test do
   # Integration tests
   gem 'capybara'
+
+  # Enable javascript for SPA
+  gem 'selenium-webdriver'
 
   # View headless integration test pages for debugging
   gem 'launchy'
@@ -54,6 +59,8 @@ group :test do
 
   # Required for travis
   gem 'rake'
+
+  gem 'mysql2'
 end
 
 group :development do

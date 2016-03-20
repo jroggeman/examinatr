@@ -4,8 +4,10 @@ tom:
   username: tom
   password_digest: <%= BCrypt::Password.create("123456") %>
   name: Thomas
+  api_key: test_api_key_tom
 
 jim:
   username: jim
   password_digest: <%= BCrypt::Password.create('123456') %>
   name: Jim
+  api_key: test_api_key_jim

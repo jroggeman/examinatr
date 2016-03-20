@@ -1,0 +1,27 @@
+<div class="col-md-3">
+    <h1>{{model.name}}</h1>
+    <ul class="list-group">
+        {{#link-to "exams.show.new" class="list-group-item"}}
+        <em>New question</em>
+        {{/link-to}}
+        {{#each model.questions as |question|}}
+            {{#link-to "exams.show.question" question class="list-group-item"}}
+                {{question.number}}.&nbsp;&nbsp;
+                <em>({{question.points}} {{pluralize-points question.points}})</em> &nbsp;
+                {{question.text}}
+            {{/link-to}}
+        {{/each}}
+    </ul>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <a href='/exams/{{model.id}}.pdf' target="_blank" class="btn
+            btn-primary btn-block">Render Exam</a>
+        </div>
+        <div class="col-md-6">
+            <a href='/exams/{{model.id}}.pdf?answer_key=true' target="_blank" class="btn
+            btn-primary btn-block">Render Key</a>
+        </div>
+    </div>
+</div>
+{{outlet}}

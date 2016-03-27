@@ -44,6 +44,32 @@ class Api::V1::QuestionsController < Api::V1::BaseController
     end
   end
 
+  def move_up
+    @question = Question.find_by(id: params[:id])
+
+    api_error(status: 404) if @question.nil?
+
+    @question.move_higher
+    if @question.save
+      render json: @question
+    else
+      api_error(status: 500)
+    end
+  end
+
+  def move_down
+    @question = Question.find_by(id: params[:id])
+
+    api_error(status: 404) if @question.nil?
+
+    @question.move_lower
+    if @question.save
+      render json: @question
+    else
+      api_error(status: 500)
+    end
+  end
+
   private
 
   def question_params

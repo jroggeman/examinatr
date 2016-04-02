@@ -4,9 +4,9 @@
         {{#link-to "exams.show.new" class="list-group-item"}}
         <em>New question</em>
         {{/link-to}}
-        {{#each model.questions as |question|}}
+        {{#each model.questions as |question index|}}
             {{#link-to "exams.show.question" question class="list-group-item"}}
-                {{question.number}}.&nbsp;&nbsp;
+                {{add-one index}}.&nbsp;&nbsp;
                 <em>({{question.points}} {{pluralize-points question.points}})</em> &nbsp;
                 {{question.text}}
             {{/link-to}}

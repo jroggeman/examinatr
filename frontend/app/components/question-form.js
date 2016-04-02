@@ -19,6 +19,9 @@ export default Ember.Component.extend({
         },
         moveUp: function() {
             this.sendAction('moveUpAction');
+        },
+        moveDown: function() {
+            this.sendAction('moveDownAction');
         }
     }
 });

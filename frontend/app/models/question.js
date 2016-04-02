@@ -13,4 +13,9 @@ export default DS.Model.extend({
       path: 'move_up',
       type: 'post'
   }),
+
+  moveDown: memberAction({
+      path: 'move_down',
+      type: 'post'
+  })
 });

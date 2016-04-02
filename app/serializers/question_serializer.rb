@@ -1,3 +1,4 @@
 class QuestionSerializer < ActiveModel::Serializer
-  attributes :number, :points, :text, :answer, :id
+  attribute :position, key: :number
+  attributes :points, :text, :answer, :id
 end

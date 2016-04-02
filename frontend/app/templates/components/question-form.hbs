@@ -21,6 +21,12 @@
     </button>
 
     {{#unless newQuestion}}
+        <button class="btn btn-primary btn-block" {{action "moveUp" on="click"}}>
+            <span class="glyphicon glyphicon-arrow-up"></span>
+        </button>
+        <button class="btn btn-primary btn-block" {{action "moveDown" on="click"}}>
+            <span class="glyphicon glyphicon-arrow-down"></span>
+        </button>
     <button class="btn btn-danger btn-block" {{action "deleteQuestion" on="click"}}>Delete Question</button>
     {{/unless}}
 </form>

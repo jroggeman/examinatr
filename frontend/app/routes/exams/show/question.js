@@ -20,7 +20,10 @@ export default Ember.Route.extend({
             }
         },
         moveUp: function() {
-            alert('Moving up!');
+            var route = this;
+            this.modelFor('exams.show.question').moveUp().then(function() {
+                route.modelFor('exams.show').reload();
+            });
         }
     }
 });

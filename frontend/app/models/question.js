@@ -6,5 +6,5 @@ export default DS.Model.extend({
   answer: DS.attr('string'),
   points: DS.attr('number'),
 
-  exam: DS.belongsTo('exam')
+  exam: DS.belongsTo('exam'),
 });

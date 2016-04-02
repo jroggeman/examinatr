@@ -18,6 +18,9 @@ export default Ember.Route.extend({
                     route.transitionTo('exams.show');
                 });
             }
+        },
+        moveUp: function() {
+            alert('Moving up!');
         }
     }
 });

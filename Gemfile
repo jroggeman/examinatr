@@ -11,6 +11,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass'
 
+# Database
+gem 'mysql2'
+
 # Rendering questions
 gem 'redcarpet'
 
@@ -23,6 +26,7 @@ gem 'ember-cli-rails'
 
 # Custome serialization for API
 gem 'active_model_serializers', github: "rails-api/active_model_serializers"
+
 
 group :development do
   gem 'capistrano-rails'
@@ -59,8 +63,6 @@ group :test do
 
   # Required for travis
   gem 'rake'
-
-  gem 'mysql2'
 end
 
 group :development do

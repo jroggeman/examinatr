@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/rails-api/active_model_serializers.git
-  revision: 5af7d96294be6922d954c9dcc3ccc5e743c44ec2
+  revision: 7acbb765bdbf0a6ad8d5bde02aa3648b2b4a48ea
   specs:
     active_model_serializers (0.10.0.rc4)
       actionpack (>= 4.0)
@@ -210,7 +210,7 @@ GEM
     redcarpet (3.3.4)
     ruby-progressbar (1.7.5)
     rubyzip (1.2.0)
-    sass (3.4.21)
+    sass (3.4.22)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
@@ -251,7 +251,7 @@ GEM
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
     websocket (1.2.2)
-    wicked_pdf (1.0.4)
+    wicked_pdf (1.0.5)
     wkhtmltopdf-binary (0.9.9.3)
     xpath (2.0.0)
       nokogiri (~> 1.3)

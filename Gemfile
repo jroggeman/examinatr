@@ -41,6 +41,7 @@ group :development, :test do
 
   # Better irb and debugging
   gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :test do

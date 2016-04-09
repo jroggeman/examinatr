@@ -7,8 +7,12 @@ export default Ember.Route.extend({
 
     actions: {
         updateQuestion: function() {
-            // TODO: Add promise callbacks
-            this.modelFor('exams.show.question').save();
+            var route = this;
+            this.modelFor('exams.show.question').save().then(function() {
+                route.notify.success('Successfully updated question!');
+            }, function(error) {
+                route.notify.warning('Couldn\'t update the question.');
+            });
         },
         deleteQuestion: function() {
             var route = this;
@@ -16,6 +20,8 @@ export default Ember.Route.extend({
             if(confirm('Are you sure you want to delete this question?')) {
                 this.modelFor('exams.show.question').destroyRecord().then(function() {
                     route.transitionTo('exams.show');
+                }, function(error) {
+                    route.notify.error('Something went wrong while deleting the question :(');
                 });
             }
         },
@@ -24,6 +30,8 @@ export default Ember.Route.extend({
             this.modelFor('exams.show.question').moveUp().then(function() {
                 route.modelFor('exams.show').reload();
                 route.modelFor('exams.show.question').reload();
+            }, function(error) {
+                route.notify.warning('Couldn\'t move question :/');
             });
         },
         moveDown: function() {
@@ -31,6 +39,8 @@ export default Ember.Route.extend({
             this.modelFor('exams.show.question').moveDown().then(function() {
                 route.modelFor('exams.show').reload();
                 route.modelFor('exams.show.question').reload();
+            }, function(error) {
+                route.notify.warning('Couldn\'t move question :/');
             });
         },
     }

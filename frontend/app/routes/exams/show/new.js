@@ -7,6 +7,12 @@ export default Ember.Route.extend({
 
     actions: {
         createQuestion: function(points, text, answer) {
+            var route = this;
+            if(!points || !text || !answer) {
+                route.notify.warning('Please fill out entire form!');
+                return;
+            }
+
             var question = this.store.createRecord('question', {
                 text: text,
                 answer: answer,
@@ -20,6 +26,9 @@ export default Ember.Route.extend({
             question.save().then(function() {
                 controller.set('model', route.model());
                 route.transitionTo('exams.show.new');
+            }, function(error) {
+                question.destroyRecord();
+                route.notify.warning('Couldn\' create question :/');
             });
         }
     }

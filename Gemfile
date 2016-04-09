@@ -42,6 +42,8 @@ group :development, :test do
   # Better irb and debugging
   gem 'pry-rails'
   gem 'pry-byebug'
+
+  gem 'database_cleaner'
 end
 
 group :test do

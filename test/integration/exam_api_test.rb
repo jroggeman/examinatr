@@ -11,7 +11,7 @@ class ExamApiTest < ActionDispatch::IntegrationTest
 
     assert_response :success
 
-    assert_equal json["data"].length, 2
+    assert_equal 2, json["data"].length
   end
 
   test "should get specific exam" do

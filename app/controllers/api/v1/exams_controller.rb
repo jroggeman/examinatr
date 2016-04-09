@@ -12,7 +12,7 @@ class Api::V1::ExamsController < Api::V1::BaseController
 
   def create
     @exam = Exam.new(exam_params)
-    @exam.user = api_user
+    @exam.user = current_user
 
     if @exam.save
       render json: @exam
@@ -40,7 +40,7 @@ class Api::V1::ExamsController < Api::V1::BaseController
   private
 
   def set_exam
-    @exam = api_user.exams.find_by_id(params[:id])
+    @exam = current_user.exams.find_by_id(params[:id])
     api_error(status: 404) if @exam.nil?
   end
 

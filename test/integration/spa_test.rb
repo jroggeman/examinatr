@@ -1,5 +1,7 @@
 require 'test_helper'
+require 'database_cleaner'
 
+DatabaseCleaner.strategy = :transaction
 class SpaTest < ActionDispatch::IntegrationTest
   setup do
     Capybara.current_driver = :selenium
@@ -9,6 +11,7 @@ class SpaTest < ActionDispatch::IntegrationTest
 
   teardown do
     Capybara.use_default_driver
+    DatabaseCleaner.clean
   end
 
   test "can view questions for exam" do
@@ -71,5 +74,26 @@ class SpaTest < ActionDispatch::IntegrationTest
     page.driver.browser.switch_to.alert.accept
 
     assert page.has_no_selector?('a', text: 'This will be deleted')
+  end
+
+  test "can move questions up and down" do
+    visit('/exams')
+    click_on('Exam 1')
+
+    click_on('First question')
+
+    assert page.has_selector?('h1', text: 'Question 1')
+
+    click_on('Move Down')
+
+    assert page.has_selector?('h1', text: 'Question 2')
+
+    click_on('Move Down')
+
+    assert page.has_selector?('h1', text: 'Question 2')
+
+    click_on('Move Up')
+
+    assert page.has_selector?('h1', text: 'Question 1')
   end
 end

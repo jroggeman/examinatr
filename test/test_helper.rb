@@ -9,6 +9,10 @@ require 'capybara/rails'
 require 'minitest/reporters'
 MiniTest::Reporters.use!
 
+require 'database_cleaner'
+
+DatabaseCleaner.strategy = :transaction
+
 class ActiveSupport::TestCase
   fixtures :all
 end
@@ -16,7 +20,12 @@ end
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
 
+  setup do
+    DatabaseCleaner.start
+  end
+
   teardown do
+    DatabaseCleaner.clean
     Capybara.reset_sessions!
   end
 

@@ -1,7 +1,5 @@
 require 'test_helper'
-require 'database_cleaner'
 
-DatabaseCleaner.strategy = :transaction
 class SpaTest < ActionDispatch::IntegrationTest
   setup do
     Capybara.current_driver = :selenium
@@ -11,7 +9,6 @@ class SpaTest < ActionDispatch::IntegrationTest
 
   teardown do
     Capybara.use_default_driver
-    DatabaseCleaner.clean
   end
 
   test "can view questions for exam" do
@@ -28,19 +25,6 @@ class SpaTest < ActionDispatch::IntegrationTest
     click_on('Add')
 
     assert page.has_selector?('h1', text: 'Test Exam')
-  end
-
-  test "can create question" do
-    visit('/exams')
-    click_on('Exam 1')
-
-    click_on('New question')
-    fill_in('Points', with: '5')
-    fill_in('Text', with: 'This is a question')
-    fill_in('Answer', with: 'New answer')
-    click_on('Add Question')
-
-    assert page.has_selector?('a', text: 'This is a question')
   end
 
   test "can update question" do
@@ -89,6 +73,8 @@ class SpaTest < ActionDispatch::IntegrationTest
     assert page.has_selector?('h1', text: 'Question 2')
 
     click_on('Move Down')
+
+    save_and_open_page
 
     assert page.has_selector?('h1', text: 'Question 2')
 

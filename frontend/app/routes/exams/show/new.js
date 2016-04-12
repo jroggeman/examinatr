@@ -20,14 +20,13 @@ export default Ember.Route.extend({
                 exam: this.modelFor('exams.show')
             });
 
-            var route = this;
             var controller = this.controllerFor('exams.show.new');
 
             question.save().then(function() {
                 controller.set('model', route.model());
                 route.transitionTo('exams.show.new');
-            }, function(error) {
-                question.destroyRecord();
+            }, function() {
+                question.unloadRecord();
                 route.notify.warning('Couldn\' create question :/');
             });
         }

@@ -74,12 +74,35 @@ class SpaTest < ActionDispatch::IntegrationTest
 
     click_on('Move Down')
 
-    save_and_open_page
-
     assert page.has_selector?('h1', text: 'Question 2')
 
     click_on('Move Up')
 
     assert page.has_selector?('h1', text: 'Question 1')
+  end
+
+  test "can not create question with empty for data" do
+    visit('/exams')
+    click_on('Exam 1')
+
+    click_on('New question')
+    fill_in('Text', with: 'This will not save')
+    fill_in('Answer', with: 'New answer')
+    click_on('Add Question')
+
+    assert page.has_no_selector?('a', text: 'This will not save')
+  end
+
+  test "can not create question with negative points" do
+    visit('/exams')
+    click_on('Exam 1')
+
+    click_on('New question')
+    fill_in('Points', with: '-5')
+    fill_in('Text', with: 'This will not save')
+    fill_in('Answer', with: 'New answer')
+    click_on('Add Question')
+
+    assert page.has_no_selector?('a', text: 'This will not save')
   end
 end

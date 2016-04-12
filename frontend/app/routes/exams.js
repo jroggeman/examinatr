@@ -23,7 +23,7 @@ export default Ember.Route.extend({
                 route.get('controller').set('name', '');
                 route.transitionTo('exams.show', exam);
                 route.notify.success('Successfully created exam :)');
-            }, function(error) {
+            }, function() {
                 route.notify.warning('Couldn\'t create exam :(');
                 exam.destroyRecord();
             });

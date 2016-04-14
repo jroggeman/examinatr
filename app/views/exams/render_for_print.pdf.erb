@@ -10,7 +10,9 @@
 </head>
 <body>
   <div class="container">
-    <h1><%= @exam.name %></h1>
+    <div>
+      <h1><%= @exam.name %><span class="name-tag">Name______________________________</span></h1>
+    </div>
     <ol>
     <% @exam.questions.each do |q| %>
       <li>(<%= pluralize(q.points, 'point')%>) <%= parse(q.text) %></li>

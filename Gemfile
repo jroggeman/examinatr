@@ -79,6 +79,3 @@ group :production do
   gem 'pg'
   gem 'puma'
 end
-
-
-gem 'rails_12factor', group: [:staging, :production]

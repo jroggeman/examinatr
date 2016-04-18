@@ -7,6 +7,6 @@ bower="$(pwd)/node_modules/.bin/bower"
 for app in "frontend"; do
   cd $app &&
     npm install &&
-    $bower install &&
+    $bower install
   cd ..
 done

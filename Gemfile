@@ -80,3 +80,5 @@ group :production do
   gem 'puma'
 end
 
+
+gem 'rails_12factor', group: [:staging, :production]

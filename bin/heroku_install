@@ -8,5 +8,5 @@ for app in "frontend"; do
   cd $app &&
     npm install &&
     $bower install &&
-    cd -
+  cd ..
 done

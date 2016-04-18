@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   # Temporary ember mount point
   mount_ember_app :frontend, to: '/exams', as: :exams
+  mount_ember_assets :frontend, to: "/"
 
   get '/exams/:id.pdf' => 'exams#render_for_print'
 
